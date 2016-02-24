@@ -1,11 +1,11 @@
 # ExcelHack
 去除Excel工作表保护密码
 操作步骤：
-1. 打开需要破解密码的Excel；
-2. Alt+F11，进入VBA编辑界面；
-3. 插入 -- 模块(Module)；
-4. 在右边Module的空白编辑区域，复制粘贴下面所有内容；
-5. F5，运行该VBA命令；
+>1. 打开需要破解密码的Excel；
+>2. Alt+F11，进入VBA编辑界面；
+>3. 插入 -- 模块(Module)；
+>4. 在右边Module的空白编辑区域，复制粘贴下面所有内容；
+>5. F5，运行该VBA命令；
 
 ```
 Option Explicit
