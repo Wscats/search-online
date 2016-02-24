@@ -7,6 +7,7 @@
 4. 在右边Module的空白编辑区域，复制粘贴下面所有内容；
 5. F5，运行该VBA命令；
 
+```
 Option Explicit
 Public Sub AllInternalPasswords()
 ' Breaks worksheet and workbook structure passwords. Bob McCormick
@@ -155,3 +156,4 @@ Next w1
 End If
 MsgBox ALLCLEAR & AUTHORS & VERSION & REPBACK, vbInformation, HEADER
 End Sub
+```
