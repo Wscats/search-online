@@ -1,0 +1,37 @@
+Excel Password Recovery 5.0.
+Copyright (C) 2007-2009 SmartDoctor Software. All Rights Reserved.
+
+LICENSE AGREEMENT
+
+You should carefully read the following terms and conditions 
+before using this Software. 
+
+The Excel Password Recovery 5.0 is shareware.
+
+You may use unregistered version of this Software as long as you wish. 
+If you wish to use Excel Password Recovery 5.0 without functional 
+limitations, you MUST register it.
+
+Once registered, the user is granted a non-exclusive license to use the 
+Software for the purposes described in the Documentation. 
+
+All copyrights are exclusively owned by the legitimate owners. Except 
+where otherwise noted, all of the documentation and software included 
+in the Excel Password Recovery 5.0 package is copyrighted by 
+PasswordSeeker Software. PasswordSeeker Software have the right, at its 
+discretion,to change, modify, add or remove provisions from this license 
+agreement at any time without notice. Changes shall be effective immediately. 
+
+
+Installing and using Excel Password Recovery 5.0 signifies 
+acceptance of these terms and conditions of the license.
+
+If you do not agree with the terms of this license you must remove 
+Excel Password Recovery 5.0 files from your storage devices 
+and cease to use the product.
+
+_______________________________________________________
+
+  SmartDoctor Software
+  http://www.recoverlostpassword.com
+
