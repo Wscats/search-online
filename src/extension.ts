@@ -1,5 +1,6 @@
 import * as vscode from "vscode";
 import { StatusBarUi } from './status';
+import { openBrowser } from './open';
 
 export function activate(context: vscode.ExtensionContext) {
 	const disposable = vscode.commands.registerTextEditorCommand(
@@ -44,7 +45,9 @@ async function search() {
 	const queryTemplate: string | undefined = engine && searchOnlineConfiguration.get(engine);
 	const query = queryTemplate?.replace("%SELECTION%", uriText);
 	console.log(engine);
-	query && vscode.commands.executeCommand("vscode.open", vscode.Uri.parse(query));
+	console.log(query && vscode.Uri.parse(query));
+	query && openBrowser(vscode.Uri.parse(query));
+	// vscode.commands.executeCommand("vscode.open", vscode.Uri.parse(query));
 }
 
 function getSelectedText() {
