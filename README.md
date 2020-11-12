@@ -8,21 +8,21 @@ You can select a keyword in the code, right-click to open the drop-down menu, se
 
 Or select a keyword in the code, use the shortcut key `cmd+q(mac)` / `ctrl+q(win)` to open the browser search results.
 
-![img](https://github.com/Wscats/search-online/blob/master/img/2.gif?raw=true)
+![img](img/2.gif)
 
 # Switch Search Engine
 
 You can switch between different search engines according to your needs, just click `Search Engine` in the bottom bar of vscode, and you can switch search engines. Google search used by the search engine by default.
 
-![img](https://github.com/Wscats/search-online/blob/master/img/3.gif?raw=true)
+![img](img/3.gif)
 
 Or, you can right-click to open the drop-down menu after selecting the keywords, and click `Search Online By Switch Engine`, you can switch the engine to search results.
 
-![img](https://github.com/Wscats/search-online/blob/master/img/4.gif?raw=true)
+![img](img/4.gif)
 
 If necessary, you can change the request address of the search engine.
 
-![img](https://github.com/Wscats/search-online/blob/master/img/5.png?raw=true)
+![img](img/5.png)
 
 The default request address format for each search is as follows. Note that the keywords searched in the link use `%SELECTION%` instead.
 
@@ -59,12 +59,13 @@ Or modify the `.vscode/setting.json` file to add a new search engine. For exampl
 }
 ```
 
-You can also use the add search engine option to manually add a search engine, you need to provide the name and search address.
+You can also use the add search engine option to manually add a search engine, you need to provide the name and search address, for example↓.
 
 > name: Visual Studio Marketplace
+
 > url: https://marketplace.visualstudio.com/search?term=%SELECTION%&target=VSCode
 
-![img](https://github.com/Wscats/search-online/blob/master/img/6.png?raw=true)
+![img](img/6.png)
 
 # Thanks
 
