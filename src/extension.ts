@@ -1,72 +1,48 @@
 import * as vscode from "vscode";
 import { StatusBarUi } from './status';
-import { openBrowser } from './open';
+import { openBrowser, getSelectedText, engines } from './util';
+
+interface SearchType {
+	searchType: string;
+};
 
 export function activate(context: vscode.ExtensionContext) {
-	const disposable = vscode.commands.registerTextEditorCommand(
-		"extension.searchOnline", search
-	);
-	let compileHeroOn = vscode.commands.registerCommand(
-		"compile-hero.compileHeroOn",
-		() => {
-			let config = vscode.workspace.getConfiguration("compile-hero");
-			config.update("disable-compile-files-on-did-save-code", true);
-			StatusBarUi.notWatching();
-		}
-	);
+	const searchOnline = vscode.commands.registerTextEditorCommand("extension.search-online", () => { search({ searchType: "default" }) });
+	const switchSearchOnline = vscode.commands.registerTextEditorCommand("extension.search-switch", () => { search({ searchType: "switch" }) });
+	const searchEngine = vscode.commands.registerCommand("extension.search-engine", engine);
 
-	let compileHeroOff = vscode.commands.registerCommand(
-		"compile-hero.compileHeroOff",
-		() => {
-			let config = vscode.workspace.getConfiguration("compile-hero");
-			config.update("disable-compile-files-on-did-save-code", false);
-			StatusBarUi.watching();
-		}
-	);
-
-	context.subscriptions.push(compileHeroOn);
-	context.subscriptions.push(compileHeroOff);
-	console.log(StatusBarUi);
-	context.subscriptions.push(disposable);
-	StatusBarUi.init("true");
+	context.subscriptions.push(searchEngine);
+	context.subscriptions.push(switchSearchOnline);
+	context.subscriptions.push(searchOnline);
+	StatusBarUi.init();
 }
 
-export function deactivate() { StatusBarUi.dispose(); }
+export function deactivate() { StatusBarUi.dispose() };
 
-async function search() {
+async function engine() {
+	const engine = await vscode.window.showQuickPick(engines);
+	const config = vscode.workspace.getConfiguration("search-online");
+	config.update("search-engine", engine);
+	engine && StatusBarUi.setEngine(engine);
+}
+
+async function search({ searchType }: SearchType) {
 	const selectedText = getSelectedText();
 	if (!selectedText) {
 		return;
 	}
-	const uriText = encodeURI(selectedText);
-	const searchOnlineConfiguration = vscode.workspace.getConfiguration("searchOnline");
-
-	const engine = await vscode.window.showQuickPick(["google", "baidu", "bing", "npm", "github", "pypi"]);
-	const queryTemplate: string | undefined = engine && searchOnlineConfiguration.get(engine);
-	const query = queryTemplate?.replace("%SELECTION%", uriText);
-	console.log(engine);
-	console.log(query && vscode.Uri.parse(query));
-	query && openBrowser(vscode.Uri.parse(query));
-	// vscode.commands.executeCommand("vscode.open", vscode.Uri.parse(query));
-}
-
-function getSelectedText() {
-	const documentText = vscode.window.activeTextEditor?.document.getText();
-	if (!documentText) {
-		return "";
-	}
-	const activeSelection = vscode.window.activeTextEditor?.selection;
-	if (activeSelection?.isEmpty) {
-		return "";
-	}
-	const selStartoffset = vscode.window.activeTextEditor?.document.offsetAt(
-		activeSelection?.start as vscode.Position
-	);
-	const selEndOffset = vscode.window.activeTextEditor?.document.offsetAt(
-		activeSelection?.end as vscode.Position
-	);
-
-	let selectedText = documentText.slice(selStartoffset, selEndOffset).trim();
-	selectedText = selectedText.replace(/\s\s+/g, " ");
-	return selectedText;
+	const urlQuery = encodeURI(selectedText);
+	const config = vscode.workspace.getConfiguration("search-online");
+	let engine;
+	switch (searchType) {
+		case "switch":
+			engine = await vscode.window.showQuickPick(engines);
+			break;
+		default:
+			engine = config.get<string>("search-engine");
+			break;
+	};
+	const uriTemplate: string | undefined = engine && config.get(engine);
+	const url = uriTemplate?.replace("%SELECTION%", urlQuery);
+	url && openBrowser(url);
 }

@@ -2,7 +2,7 @@
 	"name": "search",
 	"displayName": "Search",
 	"description": "Select the keywords of the editor and automatically open the browser search engine to display the results",
-	"version": "0.0.1",
+	"version": "1.0.1",
 	"engines": {
 		"vscode": "^1.51.0"
 	},
@@ -28,13 +28,14 @@
 		"bing",
 		"github",
 		"npm",
-		"pypi"
+		"pypi",
+		"engine"
 	],
 	"activationEvents": [
 		"*",
-		"onCommand:extension.searchOnline",
-		"onCommand:extension.compileHeroOn",
-		"onCommand:extension.compileHeroOff"
+		"onCommand:extension.search-online",
+		"onCommand:extension.search-engine",
+		"onCommand:extension.search-switch"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -42,52 +43,61 @@
 			"editor/context": [
 				{
 					"when": "editorHasSelection",
-					"command": "extension.searchOnline",
+					"command": "extension.search-online",
+					"group": "navigation"
+				},
+				{
+					"when": "editorHasSelection",
+					"command": "extension.search-switch",
 					"group": "navigation"
 				}
 			]
 		},
 		"commands": [
 			{
-				"command": "extension.searchOnline",
+				"command": "extension.search-online",
 				"title": "Search Online"
+			},
+			{
+				"command": "extension.search-switch",
+				"title": "Search Online By Switch Engine"
 			}
 		],
 		"configuration": {
 			"title": "Search Online Config",
 			"type": "object",
 			"properties": {
-				"searchOnline.toggle-search-engine": {
-					"type": "boolean",
-					"default": true,
-					"description": "Disable compile files on did save code."
-				},
-				"searchOnline.baidu": {
+				"search-online.search-engine": {
 					"type": "string",
-					"default": "https://www.baidu.com/s?wd=%SELECTION%",
-					"description": "Baidu Search Query"
+					"default": "Google",
+					"description": "Search Engine."
 				},
-				"searchOnline.google": {
+				"search-online.Google": {
 					"type": "string",
 					"default": "https://www.google.com/search?q=%SELECTION%",
 					"description": "Google Search Query"
 				},
-				"searchOnline.bing": {
+				"search-online.Bing": {
 					"type": "string",
 					"default": "https://www.bing.com/search?q=%SELECTION%",
 					"description": "Bing Search Query"
 				},
-				"searchOnline.npm": {
+				"search-online.Baidu": {
+					"type": "string",
+					"default": "https://www.baidu.com/s?wd=%SELECTION%",
+					"description": "Baidu Search Query"
+				},
+				"search-online.Npm": {
 					"type": "string",
 					"default": "https://www.npmjs.com/search?q=%SELECTION%",
 					"description": "Npm Search Query"
 				},
-				"searchOnline.github": {
+				"search-online.Github": {
 					"type": "string",
 					"default": "https://github.com/search?q=%SELECTION%",
 					"description": "Github Search Query"
 				},
-				"searchOnline.pypi": {
+				"search-online.Pypi": {
 					"type": "string",
 					"default": "https://pypi.org/search/?q=%SELECTION%",
 					"description": "Pypi Search Query"
@@ -116,8 +126,5 @@
 		"mocha": "^8.1.3",
 		"typescript": "^4.0.2",
 		"vscode-test": "^1.4.0"
-	},
-	"dependencies": {
-		"open": "^7.3.0"
 	}
 }

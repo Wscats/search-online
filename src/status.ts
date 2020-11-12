@@ -10,60 +10,28 @@ export class StatusBarUi {
         return StatusBarUi._statusBarItem;
     }
 
-    static init(disableCompileFilesOnDidSaveCode: string) {
+    static init() {
+        let config = vscode.workspace.getConfiguration("search-online");
+        let engine = config.get<string>("search-engine");
         StatusBarUi.working("Starting...");
         setTimeout(function () {
-            disableCompileFilesOnDidSaveCode ? StatusBarUi.notWatching() : StatusBarUi.watching();
+            engine && StatusBarUi.setEngine(engine);
+            config.set("search-engine", engine);
         }, 1000);
     }
 
-    static watching() {
-        StatusBarUi.statusBarItem.text = `$(eye) Search Online: On`;
+    static setEngine(engine: string) {
+        StatusBarUi.statusBarItem.text = `$(eye) Search Engine: ${engine}`;
         StatusBarUi.statusBarItem.color = 'inherit';
-        StatusBarUi.statusBarItem.command = 'compile-hero.compileHeroOn';
-        StatusBarUi.statusBarItem.tooltip = 'Stop live compilation';
+        StatusBarUi.statusBarItem.command = 'extension.search-engine';
+        StatusBarUi.statusBarItem.tooltip = 'Switch Search Engine';
     }
 
-    static notWatching() {
-        StatusBarUi.statusBarItem.text = `$(eye-closed) Search Online: Off`;
-        StatusBarUi.statusBarItem.color = 'inherit';
-        StatusBarUi.statusBarItem.command = 'compile-hero.compileHeroOff';
-        StatusBarUi.statusBarItem.tooltip = 'live compilation';
-    }
 
     static working(workingMsg: string = "Working on it...") {
         StatusBarUi.statusBarItem.text = `$(pulse) ${workingMsg}`;
         StatusBarUi.statusBarItem.tooltip = 'In case if it takes long time, Show output window and report.';
         StatusBarUi.statusBarItem.command = undefined;
-    }
-
-    static compilationSuccess(isWatching: boolean) {
-        StatusBarUi.statusBarItem.text = `$(check) Success`;
-        StatusBarUi.statusBarItem.color = '#33ff00';
-        StatusBarUi.statusBarItem.command = undefined;
-        if (isWatching) {
-            setTimeout(function () {
-                StatusBarUi.statusBarItem.color = 'inherit';
-                StatusBarUi.watching();
-            }, 4500);
-        }
-        else {
-            StatusBarUi.notWatching();
-        }
-    }
-    static compilationError(isWatching: boolean) {
-        StatusBarUi.statusBarItem.text = `$(x) Error`;
-        StatusBarUi.statusBarItem.color = '#ff0033';
-        StatusBarUi.statusBarItem.command = undefined;
-        if (isWatching) {
-            setTimeout(function () {
-                StatusBarUi.statusBarItem.color = 'inherit';
-                StatusBarUi.watching();
-            }, 4500);
-        }
-        else {
-            StatusBarUi.notWatching();
-        }
     }
 
     static dispose() {

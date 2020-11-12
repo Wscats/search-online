@@ -1,1 +1,42 @@
 # Search Online
+
+A simple extension for VSCode to search online easily using search engine.
+
+# How To Use
+
+You can select a keyword in the code, right-click to open the drop-down menu, select `Search Online`, it will automatically open the browser for you and search for related content.
+
+![img](./img/2.gif)
+
+# Switch Search Engine
+
+You can switch between different search engines according to your needs, just click `Search Engine` in the bottom bar of vscode, and you can switch search engines. Google search used by the search engine by default.
+
+![img](./img/3.gif)
+
+Or, you can right-click to open the drop-down menu after selecting the keywords, and click `Search Online By Switch Engine`, you can switch the engine to search results.
+
+![img](./img/4.gif)
+
+If necessary, you can change the request address of the search engine.
+
+| Engine | Url                              |
+| ------ | -------------------------------- |
+| Google | https://www.google.com/search?q= |
+| Bing   | https://www.bing.com/search?q=   |
+| Github | https://www.github.com/search?q= |
+| Baidu  | https://www.baidu.com/search?q=  |
+| Npm    | https://www.npmjs.com/search?q=  |
+| Pypi   | https://pypi.org/search/?q=      |
+
+Or modify the `.vscode/setting.json` file to change the default search engine. For example, modify to the following configuration, then every time you click on `Search Online`, you will use `Bing` to search for related content.
+
+```json
+{
+  "search-online.search-engine": "Bing"
+}
+```
+
+If the plugin can help you, please enter the [Rating & Review](https://marketplace.visualstudio.com/items?itemName=Wscats.search&ssr=false#review-details) link to give me a five-star praise.
+
+If you have any questions or suggestions during use, please leave a message in the [issue](https://github.com/Wscats/search-online/issues/new).
