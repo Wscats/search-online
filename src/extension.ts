@@ -43,7 +43,12 @@ async function search({ searchType }: SearchType) {
 		case "switch":
 			engine = await vscode.window.showQuickPick(getEngines());
 			if (engine === "➕ Add Search Engine") {
-				engineAddedConfig = await setEngines();
+				const newEngineConfig = await setEngines();
+				engine = newEngineConfig?.newEngine.name;
+				engineAddedConfig = newEngineConfig?.newEngines;
+			}
+			if (!engine) {
+				return;
 			}
 			break;
 		default:

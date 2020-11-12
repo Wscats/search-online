@@ -33,7 +33,6 @@ The default request address format for each search is as follows. Note that the 
 | Github | https://www.github.com/search?q=%SELECTION% |
 | Baidu  | https://www.baidu.com/search?q=%SELECTION%  |
 | Npm    | https://www.npmjs.com/search?q=%SELECTION%  |
-| Pypi   | https://pypi.org/search/?q=%SELECTION%      |
 
 Or modify the `.vscode/setting.json` file to change the default search engine. For example, modify to the following configuration, then every time you click on `Search Online`, you will use `Bing` to search for related content.
 
@@ -43,16 +42,29 @@ Or modify the `.vscode/setting.json` file to change the default search engine. F
 }
 ```
 
+Or modify the `.vscode/setting.json` file to add a new search engine. For example, by modifying `.vscode/setting.json` below, two new search engines, Visual Studio Marketplace and Pypi, are added.
+
 ```json
 {
   "search-online.add-search-engine": [
     {
-      "engine": "Visual Studio Marketplace",
-      "url": "https://marketplace.visualstudio.com/search?term=%SELECTION%&target=AzureDevOps"
+      "name": "Visual Studio Marketplace",
+      "url": "https://marketplace.visualstudio.com/search?term=%SELECTION%&target=VSCode"
+    },
+    {
+      "name": "Pypi",
+      "url": "https://pypi.org/search/?q=%SELECTION%"
     }
   ]
 }
 ```
+
+You can also use the add search engine option to manually add a search engine, you need to provide the name and search address.
+
+> name: Visual Studio Marketplace
+> url: https://marketplace.visualstudio.com/search?term=%SELECTION%&target=VSCode
+
+![img](https://github.com/Wscats/search-online/blob/master/img/6.png?raw=true)
 
 # Thanks
 

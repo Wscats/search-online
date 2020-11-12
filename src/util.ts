@@ -33,15 +33,13 @@ export const setEngines = async () => {
     const engineUrl = await vscode.window.showInputBox({
         "prompt": "Set your search engine address -> like: https://www.google.com/search?q=%SELECTION%"
     });
-    if (!engineName && !engineUrl) {
+    if (!engineName || !engineUrl) {
         return;
     }
-    const newEngines = engineAddedConfig && [{
-        name: engineName,
-        url: engineUrl
-    } as Iengine, ...engineAddedConfig];
+    const newEngine: Iengine = { name: engineName, url: engineUrl };
+    const newEngines = engineAddedConfig && [newEngine, ...engineAddedConfig];
     config.update("add-search-engine", newEngines);
-    return newEngines;
+    return { newEngine, newEngines };
 }
 
 export const standardizedBrowserName = (name: string = ''): string => {

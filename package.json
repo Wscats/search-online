@@ -2,7 +2,7 @@
 	"name": "search",
 	"displayName": "Search",
 	"description": "🔍Use search engines to search for code keywords.",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"engines": {
 		"vscode": "^1.51.0"
 	},
@@ -115,8 +115,8 @@
 					"type": "array",
 					"default": [
 						{
-							"engineName": "Test",
-							"url": "https://pypi.org/search/?q=%SELECTION%"
+							"name": "Google",
+							"url": "https://www.google.com/search?q=%SELECTION%"
 						}
 					],
 					"description": "Add Search Engine"
