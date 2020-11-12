@@ -2,7 +2,7 @@
 	"name": "search",
 	"displayName": "Search",
 	"description": "🔍Use search engines to search for code keywords.",
-	"version": "1.0.5",
+	"version": "1.0.6",
 	"engines": {
 		"vscode": "^1.51.0"
 	},
