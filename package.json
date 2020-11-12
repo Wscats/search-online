@@ -1,7 +1,7 @@
 {
 	"name": "search",
 	"displayName": "Search",
-	"description": "Select the keywords of the editor and automatically open the browser search engine to display the results",
+	"description": "Select the keywords of the editor and automatically open the browser search engine to display the results.",
 	"version": "1.0.1",
 	"engines": {
 		"vscode": "^1.51.0"
@@ -14,7 +14,7 @@
 		"name": "Eno Yao",
 		"url": "https://github.com/Wscats/search-online"
 	},
-	"icon": "icon.png",
+	"icon": "./img/icon.png",
 	"homepage": "https://github.com/Wscats/search-online",
 	"repository": {
 		"type": "git",
@@ -53,6 +53,15 @@
 				}
 			]
 		},
+		"keybindings": [
+			{
+				"when": "editorHasSelection",
+				"command": "extension.search-online",
+				"key": "ctrl+q cmd+q",
+				"mac": "cmd+q",
+				"win": "ctrl+q"
+			}
+		],
 		"commands": [
 			{
 				"command": "extension.search-online",
