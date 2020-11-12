@@ -4,7 +4,46 @@ import opn from './browser';
 import * as fs from "fs";
 import * as os from "os";
 
-export const engines = ["Google", "Baidu", "Bing", "Npm", "Github", "Pypi"];
+export interface Iengine { name: string, url: string }
+
+export const getEngines = (): string[] => {
+    const config = vscode.workspace.getConfiguration("search-online");
+    const engineAddedConfig = config.get<Iengine[]>("add-search-engine");
+    const engineAdded = engineAddedConfig?.filter((engineItem: Iengine) => {
+        if (engineItem?.name && engineItem?.url) {
+            return engineItem;
+        }
+    }).map((engineItem: Iengine) => {
+        return engineItem.name;
+    })
+    if (engineAdded) {
+        return ["Google", "Baidu", "Bing", "Npm", "Github", "Pypi", ...engineAdded, "➕ Add Search Engine"];
+    } else {
+        return ["Google", "Baidu", "Bing", "Npm", "Github", "Pypi", "➕ Add Search Engine"];
+    }
+
+};
+
+export const setEngines = async () => {
+    const config = vscode.workspace.getConfiguration("search-online");
+    const engineAddedConfig = config.get<Iengine[]>("add-search-engine");
+    const engineName = await vscode.window.showInputBox({
+        "prompt": "Set your search engine name -> like: Google"
+    });
+    const engineUrl = await vscode.window.showInputBox({
+        "prompt": "Set your search engine address -> like: https://www.google.com/search?q=%SELECTION%"
+    });
+    if (!engineName && !engineUrl) {
+        return;
+    }
+    const newEngines = engineAddedConfig && [{
+        name: engineName,
+        url: engineUrl
+    } as Iengine, ...engineAddedConfig];
+    config.update("add-search-engine", newEngines);
+    return newEngines;
+}
+
 export const standardizedBrowserName = (name: string = ''): string => {
     let _name = name.toLowerCase();
     const browser = Config.browsers.find(item => {

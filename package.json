@@ -1,8 +1,8 @@
 {
 	"name": "search",
 	"displayName": "Search",
-	"description": "Select the keywords of the editor and automatically open the browser search engine to display the results.",
-	"version": "1.0.2",
+	"description": "🔍Use search engines to search for code keywords.",
+	"version": "1.0.3",
 	"engines": {
 		"vscode": "^1.51.0"
 	},
@@ -79,37 +79,47 @@
 				"search-online.search-engine": {
 					"type": "string",
 					"default": "Google",
-					"description": "Search Engine."
+					"description": "Search Engine"
 				},
 				"search-online.Google": {
 					"type": "string",
 					"default": "https://www.google.com/search?q=%SELECTION%",
-					"description": "Google Search Query"
+					"description": "Google Search Engine"
 				},
 				"search-online.Bing": {
 					"type": "string",
 					"default": "https://www.bing.com/search?q=%SELECTION%",
-					"description": "Bing Search Query"
+					"description": "Bing Search Engine"
 				},
 				"search-online.Baidu": {
 					"type": "string",
 					"default": "https://www.baidu.com/s?wd=%SELECTION%",
-					"description": "Baidu Search Query"
+					"description": "Baidu Search Engine"
 				},
 				"search-online.Npm": {
 					"type": "string",
 					"default": "https://www.npmjs.com/search?q=%SELECTION%",
-					"description": "Npm Search Query"
+					"description": "Npm Search Engine"
 				},
 				"search-online.Github": {
 					"type": "string",
 					"default": "https://github.com/search?q=%SELECTION%",
-					"description": "Github Search Query"
+					"description": "Github Search Engine"
 				},
 				"search-online.Pypi": {
 					"type": "string",
 					"default": "https://pypi.org/search/?q=%SELECTION%",
-					"description": "Pypi Search Query"
+					"description": "Pypi Search Engine"
+				},
+				"search-online.add-search-engine": {
+					"type": "array",
+					"default": [
+						{
+							"engineName": "Test",
+							"url": "https://pypi.org/search/?q=%SELECTION%"
+						}
+					],
+					"description": "Add Search Engine"
 				}
 			}
 		}

@@ -1,6 +1,6 @@
 import * as vscode from "vscode";
 import { StatusBarUi } from './status';
-import { openBrowser, getSelectedText, engines } from './util';
+import { openBrowser, getSelectedText, getEngines, Iengine, setEngines } from './util';
 
 interface SearchType {
 	searchType: string;
@@ -20,10 +20,14 @@ export function activate(context: vscode.ExtensionContext) {
 export function deactivate() { StatusBarUi.dispose() };
 
 async function engine() {
-	const engine = await vscode.window.showQuickPick(engines);
-	const config = vscode.workspace.getConfiguration("search-online");
-	config.update("search-engine", engine);
-	engine && StatusBarUi.setEngine(engine);
+	const engine = await vscode.window.showQuickPick(getEngines());
+	if (engine === "➕ Add Search Engine") {
+		setEngines();
+	} else {
+		const config = vscode.workspace.getConfiguration("search-online");
+		config.update("search-engine", engine);
+		engine && StatusBarUi.setEngine(engine);
+	}
 }
 
 async function search({ searchType }: SearchType) {
@@ -33,16 +37,34 @@ async function search({ searchType }: SearchType) {
 	}
 	const urlQuery = encodeURI(selectedText);
 	const config = vscode.workspace.getConfiguration("search-online");
-	let engine;
+	let engine: string | undefined;
+	let engineAddedConfig: Iengine[] | undefined;
 	switch (searchType) {
 		case "switch":
-			engine = await vscode.window.showQuickPick(engines);
+			engine = await vscode.window.showQuickPick(getEngines());
+			if (engine === "➕ Add Search Engine") {
+				engineAddedConfig = await setEngines();
+			}
 			break;
 		default:
 			engine = config.get<string>("search-engine");
 			break;
 	};
-	const uriTemplate: string | undefined = engine && config.get(engine);
-	const url = uriTemplate?.replace("%SELECTION%", urlQuery);
-	url && openBrowser(url);
+	if (!engineAddedConfig) {
+		engineAddedConfig = config.get<Iengine[]>("add-search-engine");
+	}
+	const engineAddedFilter = engineAddedConfig?.filter((engineItem: Iengine) => {
+		if (engineItem.name === engine) {
+			return engineItem;
+		}
+	})
+	if (engineAddedFilter && engineAddedFilter?.length > 0) {
+		const uriTemplate = engineAddedFilter[0].url;
+		const url = uriTemplate?.replace("%SELECTION%", urlQuery);
+		openBrowser(url);
+	} else {
+		const uriTemplate: string | undefined = engine && config.get<string>(engine);
+		const url = uriTemplate?.replace("%SELECTION%", urlQuery);
+		url && openBrowser(url);
+	}
 }
