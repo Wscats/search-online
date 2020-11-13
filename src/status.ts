@@ -1,3 +1,9 @@
+/**
+ * Copyright © 1998 - 2020 Tencent. All Rights Reserved.
+ *
+ * @author enoyao
+ */
+
 import * as vscode from 'vscode';
 
 export class StatusBarUi {

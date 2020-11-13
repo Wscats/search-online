@@ -1,8 +1,15 @@
+/**
+ * Copyright © 1998 - 2020 Tencent. All Rights Reserved.
+ *
+ * @author enoyao
+ */
+
 import Config from './config';
 import * as vscode from 'vscode';
 import opn from './browser';
 import * as fs from "fs";
 import * as os from "os";
+import { languageConfig } from "./language";
 
 export interface Iengine { name: string, url: string }
 
@@ -128,4 +135,8 @@ export const getSelectedText = () => {
     let selectedText = documentText.slice(selectStartOffset, selectEndOffset).trim();
     selectedText = selectedText.replace(/\s\s+/g, " ");
     return selectedText;
+}
+
+export const getLanguageCode = () => {
+
 }

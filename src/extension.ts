@@ -1,6 +1,12 @@
+/**
+ * Copyright © 1998 - 2020 Tencent. All Rights Reserved.
+ *
+ * @author enoyao
+ */
+
 import * as vscode from "vscode";
 import { StatusBarUi } from './status';
-import { openBrowser, getSelectedText, getEngines, Iengine, setEngines } from './util';
+import { openBrowser, getSelectedText, getEngines, Iengine, setEngines, getLanguageCode } from './util';
 
 interface SearchType {
 	searchType: string;
@@ -41,6 +47,8 @@ async function search({ searchType }: SearchType) {
 	const config = vscode.workspace.getConfiguration("search-online");
 	let engine: string | undefined;
 	let engineAddedConfig: Iengine[] | undefined;
+	let traslateIutput: string | undefined;
+	let traslateOutput: string | undefined;
 	switch (searchType) {
 		case "switch":
 			engine = await vscode.window.showQuickPick(getEngines());
@@ -54,6 +62,9 @@ async function search({ searchType }: SearchType) {
 			}
 			break;
 		case "translate":
+			engine = 'Google Translate';
+			traslateIutput = config.get<string>("Google Translate Output Language");
+			traslateOutput = config.get<string>("Google Translate Input Language");
 			break;
 		default:
 			engine = config.get<string>("search-engine");
@@ -69,7 +80,7 @@ async function search({ searchType }: SearchType) {
 	})
 	if (engineAddedFilter && engineAddedFilter?.length > 0) {
 		const uriTemplate = engineAddedFilter[0].url;
-		const url = uriTemplate?.replace("%SELECTION%", urlQuery);
+		const url = uriTemplate?.replace("%SELECTION%", urlQuery).replace("%INPUT_LANGUAGE%", "");
 		openBrowser(url);
 	} else {
 		const uriTemplate: string | undefined = engine && config.get<string>(engine);
