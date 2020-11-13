@@ -1,8 +1,8 @@
 {
 	"name": "search",
-	"displayName": "Search",
-	"description": "🔍Use search engines to search for code keywords.",
-	"version": "1.0.7",
+	"displayName": "Search And Translate Hero - Google/Bing/Baidu/Github/Npm Engine",
+	"description": "🔍Support search and translate online.",
+	"version": "1.0.9",
 	"engines": {
 		"vscode": "^1.51.0"
 	},

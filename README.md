@@ -1,4 +1,9 @@
-# Search Or Translate
+# Feature
+
+<a href="https://marketplace.visualstudio.com/items?itemName=Wscats.search"><img src="https://img.shields.io/badge/Download-+-orange" alt="Download" /></a>
+<a href="https://marketplace.visualstudio.com/items?itemName=Wscats.search"><img src="https://img.shields.io/badge/Macketplace-v1.X-brightgreen" alt="Macketplace" /></a>
+<a href="https://github.com/Wscats/search-online"><img src="https://img.shields.io/badge/Github Page-Wscats-yellow" alt="Github Page" /></a>
+<a href="https://github.com/Wscats"><img src="https://img.shields.io/badge/Author-Eno Yao-blueviolet" alt="Eno Yao" /></a>
 
 A simple extension for VSCode to search or translate online easily using different engine.
 
@@ -78,6 +83,13 @@ You can change the translation language configuration item of the extension to h
 ![img](https://github.com/Wscats/search-online/blob/master/img/7.png?raw=true)
 
 # Thanks
+
+<b><details><summary>Author Of Tencent Alloyteam Team</summary></b>
+
+| [<img src="https://avatars1.githubusercontent.com/u/17243165?s=460&v=4" width="60px;"/><br /><sub>Eno Yao</sub>](https://github.com/Wscats) |
+| - |
+
+</details>
 
 If the extension can help you, please enter the [Rating & Review](https://marketplace.visualstudio.com/items?itemName=Wscats.search&ssr=false#review-details) link to give me a five-star praise.
 
