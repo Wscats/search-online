@@ -2,13 +2,15 @@
 	"name": "search",
 	"displayName": "Search And Translate Hero - Google/Bing/Baidu/Github/Npm Engine",
 	"description": "🔍Support search and translate online.",
-	"version": "1.0.9",
+	"version": "1.0.10",
 	"engines": {
 		"vscode": "^1.51.0"
 	},
 	"publisher": "Wscats",
 	"categories": [
-		"Other"
+		"Other",
+		"Programming Languages",
+		"Formatters"
 	],
 	"author": {
 		"name": "Eno Yao",
@@ -51,12 +53,12 @@
 				},
 				{
 					"when": "editorHasSelection",
-					"command": "extension.search-switch",
+					"command": "extension.search-translate",
 					"group": "navigation"
 				},
 				{
 					"when": "editorHasSelection",
-					"command": "extension.search-translate",
+					"command": "extension.search-switch",
 					"group": "navigation"
 				}
 			]
@@ -76,12 +78,12 @@
 				"title": "Search Online"
 			},
 			{
-				"command": "extension.search-switch",
-				"title": "Search Online By Switch Engine"
-			},
-			{
 				"command": "extension.search-translate",
 				"title": "Translate Online"
+			},
+			{
+				"command": "extension.search-switch",
+				"title": "Search Online By Switch Engine"
 			}
 		],
 		"configuration": {
@@ -90,6 +92,14 @@
 			"properties": {
 				"search-online.search-engine": {
 					"type": "string",
+					"enum": [
+						"Google",
+						"Bing",
+						"Baidu",
+						"Npm",
+						"Github",
+						"Google Translate"
+					],
 					"default": "Google",
 					"description": "Search Engine"
 				},

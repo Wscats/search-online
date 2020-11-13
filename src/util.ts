@@ -4,12 +4,13 @@
  * @author enoyao
  */
 
-import Config from './config';
+
 import * as vscode from 'vscode';
-import opn from './browser';
 import * as fs from "fs";
 import * as os from "os";
+import opn from './open';
 import { languageConfig } from "./language";
+import { browserConfig } from './browser';
 
 export interface Iengine { name: string, url: string }
 
@@ -51,14 +52,14 @@ export const setEngines = async () => {
 
 export const standardizedBrowserName = (name: string = ''): string => {
     let _name = name.toLowerCase();
-    const browser = Config.browsers.find(item => {
+    const browser = browserConfig.browsers.find(item => {
         return item.acceptName.indexOf(_name) !== -1;
     });
     return browser ? browser.standardName : '';
 };
 
 export const defaultBrowser = (): string => {
-    const config = vscode.workspace.getConfiguration(Config.app);
+    const config = vscode.workspace.getConfiguration(browserConfig.app);
     return config ? config.default : '';
 };
 

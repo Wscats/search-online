@@ -4,159 +4,93 @@
  * @author enoyao
  */
 
-import { promisify } from "util";
-import * as path from "path";
-import * as fs from "fs";
-import * as childProcess from "child_process";
-import { docker, wsl } from './util';
+import { QuickPickItem } from "vscode";
 
-const pAccess = promisify(fs.access);
-const pExecFile = promisify(childProcess.execFile);
+interface PickItem extends QuickPickItem {
+  [propName: string]: any;
+}
 
-const localXdgOpenPath = path.join(__dirname, 'xdg-open');
+const platform = process.platform;
 
-const wslToWindowsPath = async (path: string) => {
-    const { stdout } = await pExecFile('wslpath', ['-w', path]);
-    return stdout.trim();
+const chromeItem: PickItem = {
+  description: "Windows, Mac, Linux",
+  detail: "A fast, secure, and free web browser built for the modern web",
+  label: "Google Chrome",
+  standardName: platform === 'win32'
+    ? 'chrome'
+    : (
+      platform === 'darwin'
+        ? 'google chrome'
+        : 'google-chrome'
+    ),
+  acceptName: ['chrome', 'google chrome', 'google-chrome', 'gc', '谷歌浏览器']
 };
 
-const windowsToWslPath = async (path: string) => {
-    const { stdout } = await pExecFile('wslpath', [path]);
-    return stdout.trim();
+const chromiumItem: PickItem = {
+  description: "Mac",
+  detail: "A fast, secure, and free web browser built for the modern web",
+  label: "Google Chromium",
+  standardName: "Chromium",
+  acceptName: ['chromium']
+};
+const firefoxItem: PickItem = {
+  description: "Windows, Mac, Linux",
+  detail: "A fast, smart and personal web browser",
+  label: "Mozilla Firefox",
+  standardName: "firefox",
+  acceptName: ['firefox', 'ff', 'mozilla firefox', '火狐浏览器']
+};
+const firefoxDeveloperItem: PickItem = {
+  description: "Mac",
+  detail: "A fast, smart and personal web browser",
+  label: "Mozilla Firefox Developer Edition",
+  standardName: "FirefoxDeveloperEdition",
+  acceptName: ['firefox developer', 'fde', 'firefox developer edition']
 };
 
-const wslGetWindowsEnvVar = async (envVar: string) => {
-    const { stdout } = await pExecFile('wslvar', [envVar]);
-    return stdout.trim();
+const ieItem: PickItem = {
+  description: "Windows",
+  detail: "A slightly outdated browser",
+  label: "Microsoft IE",
+  standardName: "iexplore",
+  acceptName: ['ie', 'iexplore']
+};
+const edgeItem: PickItem = {
+  description: "Windows",
+  detail: "A modern browser aiming to replace ie",
+  label: "Microsoft Edge",
+  standardName: "MicrosoftEdge",
+  acceptName: ['edge', 'msedge', 'microsoftedge']
 };
 
-export default async (target: string, options: any) => {
-    if (typeof target !== 'string') {
-        throw new TypeError('Expected a `target`');
-    }
+const safariItem: PickItem = {
+  description: "Mac",
+  detail: "A fast, efficient browser on Mac",
+  label: "Apple Safari",
+  standardName: "safari",
+  acceptName: ['safari']
+};
 
-    options = {
-        wait: false,
-        background: false,
-        allowNonzeroExitCode: false,
-        ...options
-    };
+const operaItem: PickItem = {
+  description: "Windows, Mac",
+  detail: 'A fast, secure, easy-to-use browser',
+  label: 'Opera',
+  standardName: 'opera',
+  acceptName: ['opera']
+};
 
-    let command;
-    let { app } = options;
-    let appArguments = [];
-    const cliArguments = [];
-    const childProcessOptions: any = {};
+const browsers = [chromeItem, firefoxItem, operaItem];
 
-    if (Array.isArray(app)) {
-        appArguments = app.slice(1);
-        app = app[0];
-    }
+if (process.platform === 'win32') {
+  browsers.push(ieItem);
+  browsers.push(edgeItem);
+} else if (process.platform === 'darwin') {
+  browsers.push(safariItem);
+  browsers.push(chromiumItem);
+  browsers.push(firefoxDeveloperItem);
+}
 
-    if (process.platform === 'darwin') {
-        command = 'open';
-
-        if (options.wait) {
-            cliArguments.push('--wait-apps');
-        }
-
-        if (options.background) {
-            cliArguments.push('--background');
-        }
-
-        if (app) {
-            cliArguments.push('-a', app);
-        }
-    } else if (process.platform === 'win32' || (wsl && !docker())) {
-        const windowsRoot = wsl ? await wslGetWindowsEnvVar('systemroot') : process.env.SYSTEMROOT;
-        command = String.raw`${windowsRoot}\System32\WindowsPowerShell\v1.0\powershell${wsl ? '.exe' : ''}`;
-        cliArguments.push(
-            '-NoProfile',
-            '-NonInteractive',
-            '–ExecutionPolicy',
-            'Bypass',
-            '-EncodedCommand'
-        );
-
-        if (wsl) {
-            command = await windowsToWslPath(command);
-        } else {
-            childProcessOptions.windowsVerbatimArguments = true;
-        }
-
-        const encodedArguments = ['Start'];
-
-        if (options.wait) {
-            encodedArguments.push('-Wait');
-        }
-
-        if (app) {
-            if (wsl && app.startsWith('/mnt/')) {
-                const windowsPath = await wslToWindowsPath(app);
-                app = windowsPath;
-            }
-
-            encodedArguments.push(`"\`"${app}\`""`, '-ArgumentList');
-            appArguments.unshift(target);
-        } else {
-            encodedArguments.push(`"\`"${target}\`""`);
-        }
-
-        if (appArguments.length > 0) {
-            appArguments = appArguments.map(arg => `"\`"${arg}\`""`);
-            encodedArguments.push(appArguments.join(','));
-        }
-
-        target = Buffer.from(encodedArguments.join(' '), 'utf16le').toString('base64');
-    } else {
-        if (app) {
-            command = app;
-        } else {
-            const isBundled = !__dirname || __dirname === '/';
-
-            let exeLocalXdgOpen = false;
-            try {
-                await pAccess(localXdgOpenPath, fs.constants.X_OK);
-                exeLocalXdgOpen = true;
-            } catch (_) { }
-
-            const useSystemXdgOpen = (process.versions as any).electron ||
-                process.platform === 'android' || isBundled || !exeLocalXdgOpen;
-            command = useSystemXdgOpen ? 'xdg-open' : localXdgOpenPath;
-        }
-
-        if (appArguments.length > 0) {
-            cliArguments.push(...appArguments);
-        }
-
-        if (!options.wait) {
-            childProcessOptions.stdio = 'ignore';
-            childProcessOptions.detached = true;
-        }
-    }
-
-    cliArguments.push(target);
-
-    if (process.platform === 'darwin' && appArguments.length > 0) {
-        cliArguments.push('--args', ...appArguments);
-    }
-
-    const subprocess = childProcess.spawn(command, cliArguments, childProcessOptions);
-
-    if (options.wait) {
-        return new Promise((resolve, reject) => {
-            subprocess.once('error', reject);
-
-            subprocess.once('close', (exitCode: number) => {
-                if (options.allowNonzeroExitCode && exitCode > 0) {
-                    reject(new Error(`Exited with code ${exitCode}`));
-                    return;
-                }
-
-                resolve(subprocess);
-            });
-        });
-    }
-    subprocess.unref();
-    return subprocess;
+export const browserConfig = {
+  browsers: browsers,
+  app: 'open-in-browser'
 };
