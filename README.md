@@ -1,6 +1,6 @@
-# Search Online
+# Search Or Translate
 
-A simple extension for VSCode to search online easily using search engine.
+A simple extension for VSCode to search or translate online easily using different engine.
 
 # How To Use
 
@@ -73,7 +73,9 @@ You can also use the add search engine option to manually add a search engine, y
 
 # Switch Language Engine
 
+You can change the translation language configuration item of the extension to help you translate different texts.
 
+![img](https://github.com/Wscats/search-online/blob/master/img/7.png?raw=true)
 
 # Thanks
 

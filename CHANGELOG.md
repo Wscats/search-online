@@ -8,6 +8,7 @@
 - 2020-10-08 Add some default search engines, support two switching methods.
 - 2020-11-11 Publish to the VS extension plugin market.
 - 2020-11-12 Support for adding new search engines, using visual interface and configuration files to add.
+- 2020-11-12 Support the use of Google Translate to translate the languages of various countries.
 
 # Unreleased
 
