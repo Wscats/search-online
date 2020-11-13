@@ -21,10 +21,12 @@
 		"url": "https://github.com/Wscats/search-online"
 	},
 	"keywords": [
+		"google",
+		"translate",
+		"google translate",
 		"baidu",
 		"search",
 		"vscode",
-		"google",
 		"bing",
 		"github",
 		"npm",
@@ -35,7 +37,8 @@
 		"*",
 		"onCommand:extension.search-online",
 		"onCommand:extension.search-engine",
-		"onCommand:extension.search-switch"
+		"onCommand:extension.search-switch",
+		"onCommand:extension.search-translate"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -49,6 +52,11 @@
 				{
 					"when": "editorHasSelection",
 					"command": "extension.search-switch",
+					"group": "navigation"
+				},
+				{
+					"when": "editorHasSelection",
+					"command": "extension.search-translate",
 					"group": "navigation"
 				}
 			]
@@ -70,6 +78,10 @@
 			{
 				"command": "extension.search-switch",
 				"title": "Search Online By Switch Engine"
+			},
+			{
+				"command": "extension.search-translate",
+				"title": "Translate Online"
 			}
 		],
 		"configuration": {
@@ -106,10 +118,10 @@
 					"default": "https://github.com/search?q=%SELECTION%",
 					"description": "Github Search Engine"
 				},
-				"search-online.Pypi": {
+				"search-online.Google Translate": {
 					"type": "string",
-					"default": "https://pypi.org/search/?q=%SELECTION%",
-					"description": "Pypi Search Engine"
+					"default": "https://translate.google.com.hk/?sl=en&tl=zh-CN&text=%SELECTION%&op=translate",
+					"description": "Google Translate Engine"
 				},
 				"search-online.add-search-engine": {
 					"type": "array",

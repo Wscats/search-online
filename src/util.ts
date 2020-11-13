@@ -17,9 +17,9 @@ export const getEngines = (): string[] => {
         return engineItem.name;
     })
     if (engineAdded) {
-        return ["Google", "Baidu", "Bing", "Npm", "Github", "Pypi", ...engineAdded, "➕ Add Search Engine"];
+        return ["Google", "Bing", "Baidu", "Npm", "Github", "Google Translate", ...engineAdded, "➕ Add Search Engine"];
     } else {
-        return ["Google", "Baidu", "Bing", "Npm", "Github", "Pypi", "➕ Add Search Engine"];
+        return ["Google", "Bing", "Baidu", "Npm", "Github", "Google Translate", "➕ Add Search Engine"];
     }
 
 };

@@ -9,11 +9,13 @@ interface SearchType {
 export function activate(context: vscode.ExtensionContext) {
 	const searchOnline = vscode.commands.registerTextEditorCommand("extension.search-online", () => { search({ searchType: "default" }) });
 	const switchSearchOnline = vscode.commands.registerTextEditorCommand("extension.search-switch", () => { search({ searchType: "switch" }) });
+	const searchTranslate = vscode.commands.registerTextEditorCommand("extension.search-translate", () => { search({ searchType: "translate" }) });
 	const searchEngine = vscode.commands.registerCommand("extension.search-engine", engine);
 
 	context.subscriptions.push(searchEngine);
 	context.subscriptions.push(switchSearchOnline);
 	context.subscriptions.push(searchOnline);
+	context.subscriptions.push(searchTranslate);
 	StatusBarUi.init();
 }
 
@@ -50,6 +52,8 @@ async function search({ searchType }: SearchType) {
 			if (!engine) {
 				return;
 			}
+			break;
+		case "translate":
 			break;
 		default:
 			engine = config.get<string>("search-engine");
