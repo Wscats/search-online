@@ -10,8 +10,8 @@ vsc-extension-quickstart.md
 **/*.map
 **/*.ts
 img/icon.psd
-# img/*.gif
-# img/1.png
-# img/5.png
-# img/6.png
+img/*.gif
+img/1.png
+img/5.png
+img/6.png
 

@@ -49,6 +49,8 @@ async function search({ searchType }: SearchType) {
 	let engineAddedConfig: Iengine[] | undefined;
 	let traslateIutput: string | undefined;
 	let traslateOutput: string | undefined;
+	let traslateIntputCode: string = "en";
+	let traslateOutputCode: string = "zh-CN";
 	switch (searchType) {
 		case "switch":
 			engine = await vscode.window.showQuickPick(getEngines());
@@ -63,8 +65,10 @@ async function search({ searchType }: SearchType) {
 			break;
 		case "translate":
 			engine = 'Google Translate';
-			traslateIutput = config.get<string>("Google Translate Output Language");
-			traslateOutput = config.get<string>("Google Translate Input Language");
+			traslateIutput = config.get<string>("Google Translate Input Language");
+			traslateOutput = config.get<string>("Google Translate Output Language");
+			traslateIntputCode = traslateIutput ? getLanguageCode(traslateIutput) : "en";
+			traslateOutputCode = traslateOutput ? getLanguageCode(traslateOutput) : "zh-CN";
 			break;
 		default:
 			engine = config.get<string>("search-engine");
@@ -80,11 +84,11 @@ async function search({ searchType }: SearchType) {
 	})
 	if (engineAddedFilter && engineAddedFilter?.length > 0) {
 		const uriTemplate = engineAddedFilter[0].url;
-		const url = uriTemplate?.replace("%SELECTION%", urlQuery).replace("%INPUT_LANGUAGE%", "");
+		const url = uriTemplate?.replace("%SELECTION%", urlQuery).replace("%INPUT_LANGUAGE%", traslateIntputCode).replace("%OUTPUT_LANGUAGE%", traslateOutputCode);
 		openBrowser(url);
 	} else {
 		const uriTemplate: string | undefined = engine && config.get<string>(engine);
-		const url = uriTemplate?.replace("%SELECTION%", urlQuery);
+		const url = uriTemplate?.replace("%SELECTION%", urlQuery).replace("%INPUT_LANGUAGE%", traslateIntputCode).replace("%OUTPUT_LANGUAGE%", traslateOutputCode);
 		url && openBrowser(url);
 	}
 }

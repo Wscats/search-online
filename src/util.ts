@@ -137,6 +137,6 @@ export const getSelectedText = () => {
     return selectedText;
 }
 
-export const getLanguageCode = () => {
-
+export const getLanguageCode = (languageKey: string) => {
+    return languageConfig[languageKey];
 }
