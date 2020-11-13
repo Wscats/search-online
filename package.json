@@ -2,7 +2,7 @@
 	"name": "search",
 	"displayName": "Search And Translate Hero - Google/Bing/Baidu/Github/Npm Engine",
 	"description": "🔍Support search and translate online.",
-	"version": "1.0.11",
+	"version": "1.0.12",
 	"engines": {
 		"vscode": "^1.51.0"
 	},
@@ -24,10 +24,10 @@
 	},
 	"keywords": [
 		"google",
+		"search",
 		"translate",
 		"google translate",
 		"baidu",
-		"search",
 		"vscode",
 		"bing",
 		"github",
