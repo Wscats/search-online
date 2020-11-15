@@ -2,7 +2,7 @@
 	"name": "search",
 	"displayName": "Search And Translate Hero - Google/Bing/Baidu/Github/Stackoverflow/Npm Engine",
 	"description": "🔍Support search and translate online.",
-	"version": "1.0.17",
+	"version": "1.0.18",
 	"engines": {
 		"vscode": "^1.51.0"
 	},
@@ -71,6 +71,13 @@
 				"key": "ctrl+q cmd+q",
 				"mac": "cmd+q",
 				"win": "ctrl+q"
+			},
+			{
+				"when": "editorHasSelection",
+				"command": "extension.search-translate",
+				"key": "ctrl+r cmd+r",
+				"mac": "cmd+r",
+				"win": "ctrl+r"
 			}
 		],
 		"commands": [

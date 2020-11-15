@@ -9,13 +9,19 @@ A simple extension for VSCode to search or translate online easily using differe
 
 # How To Use
 
+## Search
+
 You can select a keyword in the code, right-click to open the drop-down menu, select `Search Online`, it will automatically open the browser for you and search for related content.
 
 Or select a keyword in the code, use the shortcut key `cmd+q(mac)` / `ctrl+q(win)` to open the browser search results.
 
 ![img](https://github.com/Wscats/search-online/blob/master/img/2.gif?raw=true)
 
-Or select the keywords in the code, right-click the drop-down menu and select `Traslate Online`, it will automatically open the browser and use Google Translate to help you translate the content.
+## Translate
+
+You can select a keyword in the code, right-click the drop-down menu and select `Traslate Online`, it will automatically open the browser and use Google Translate to help you translate the content.
+
+Or select a keyword in the code, use the shortcut key `cmd+r(mac) / ctrl+r(win)` to translate the content.
 
 ![img](https://github.com/Wscats/search-online/blob/master/img/1.gif?raw=true)
 
