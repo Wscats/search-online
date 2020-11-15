@@ -1,8 +1,8 @@
 {
 	"name": "search",
-	"displayName": "Search And Translate Hero - Google/Bing/Baidu/Github/Npm Engine",
+	"displayName": "Search And Translate Hero - Google/Bing/Baidu/Github/Stackoverflow/Npm Engine",
 	"description": "🔍Support search and translate online.",
-	"version": "1.0.12",
+	"version": "1.0.17",
 	"engines": {
 		"vscode": "^1.51.0"
 	},
@@ -23,10 +23,11 @@
 		"url": "https://github.com/Wscats/search-online"
 	},
 	"keywords": [
-		"google",
 		"search",
+		"google",
 		"translate",
 		"google translate",
+		"stackoverflow",
 		"baidu",
 		"vscode",
 		"bing",
@@ -127,6 +128,11 @@
 					"type": "string",
 					"default": "https://github.com/search?q=%SELECTION%",
 					"description": "Github Search Engine"
+				},
+				"search-online.Stack Overflow": {
+					"type": "string",
+					"default": "https://stackoverflow.com/search?q=%SELECTION%",
+					"description": "Stack Overflow Engine"
 				},
 				"search-online.Google Translate": {
 					"type": "string",

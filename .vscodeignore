@@ -9,7 +9,7 @@ vsc-extension-quickstart.md
 **/.eslintrc.json
 **/*.map
 **/*.ts
-img/icon.psd
+img/*.psd
 img/*.gif
 img/5.png
 img/6.png
