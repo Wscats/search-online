@@ -1,8 +1,8 @@
 {
 	"name": "search",
-	"displayName": "Search And Translate Hero - Google/Bing/Baidu/Github/Stackoverflow/Npm Engine",
+	"displayName": "Search Hero - Google/Bing/Baidu/Wiki/Yahoo/Github/Stackoverflow/Npm Engine",
 	"description": "🔍Support search and translate online.",
-	"version": "1.0.18",
+	"version": "1.0.19",
 	"engines": {
 		"vscode": "^1.51.0"
 	},
@@ -34,6 +34,8 @@
 		"github",
 		"npm",
 		"pypi",
+		"yahoo",
+		"wiki",
 		"engine"
 	],
 	"activationEvents": [
@@ -384,8 +386,12 @@
 					"type": "array",
 					"default": [
 						{
-							"name": "Google",
-							"url": "https://www.google.com/search?q=%SELECTION%"
+							"name": "Yahoo",
+							"url": "https://search.yahoo.com/search?p=%SELECTION%"
+						},
+						{
+							"name": "Wiki",
+							"url": "https://wikipedia.org/wiki/%SELECTION%"
 						}
 					],
 					"description": "Add Search Engine"
