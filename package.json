@@ -1,8 +1,8 @@
 {
 	"name": "search",
-	"displayName": "Search Hero - Google/Bing/Baidu/Wiki/Yahoo/Github/Stackoverflow/Npm Engine",
+	"displayName": "Search Hero - Google/Bing/Baidu/Wiki/Yahoo/Github/Npm Engine",
 	"description": "🔍Support search and translate online.",
-	"version": "1.0.19",
+	"version": "1.0.20",
 	"engines": {
 		"vscode": "^1.51.0"
 	},
