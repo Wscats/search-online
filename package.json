@@ -2,7 +2,7 @@
 	"name": "search",
 	"displayName": "Search Hero - Google/Bing/Baidu/Wiki/Yahoo/Github/Npm Engine",
 	"description": "🔍Support search and translate online.",
-	"version": "1.0.21",
+	"version": "1.0.22",
 	"engines": {
 		"vscode": "^1.51.0"
 	},
@@ -15,6 +15,10 @@
 	"author": {
 		"name": "Eno Yao",
 		"url": "https://github.com/Wscats/search-online"
+	},
+	"galleryBanner": {
+		"color": "#ffffff",
+		"theme": "dark"
 	},
 	"icon": "img/icon.png",
 	"homepage": "https://github.com/Wscats/search-online",
