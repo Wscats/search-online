@@ -2,7 +2,7 @@
 	"name": "search",
 	"displayName": "Search Hero - Google/Bing/Baidu/Wiki/Yahoo/Github/Npm Engine",
 	"description": "🔍Support search and translate online.",
-	"version": "1.0.23",
+	"version": "1.0.25",
 	"engines": {
 		"vscode": "^1.51.0"
 	},
@@ -17,7 +17,7 @@
 		"url": "https://github.com/Wscats/search-online"
 	},
 	"galleryBanner": {
-		"color": "#ffffff",
+		"color": "#58bc58",
 		"theme": "dark"
 	},
 	"icon": "img/icon.png",
