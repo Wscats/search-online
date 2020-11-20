@@ -10,6 +10,8 @@
 - 2020-11-12 Support for adding new search engines, using visual interface and configuration files to add.
 - 2020-11-12 Support the use of Google Translate to translate the languages of various countries.
 - 2020-11-15 Support stackoverflow site search.
+- 2020-11-18 Support wikipedia site search.
+- 2020-11-20 Support duckduckgo site search.
 
 # Unreleased
 
