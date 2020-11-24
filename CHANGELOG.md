@@ -12,6 +12,7 @@
 - 2020-11-15 Support stackoverflow site search.
 - 2020-11-18 Support wikipedia site search.
 - 2020-11-20 Support duckduckgo site search.
+- 2020-11-24 Support codepen and codesandbox site search.
 
 # Unreleased
 
