@@ -2,7 +2,7 @@
 	"name": "search",
 	"displayName": "Search Hero - Google/Bing/Baidu/Wiki/Yahoo/Github/Npm Engine",
 	"description": "🔍Support search and translate online.",
-	"version": "1.0.28",
+	"version": "1.0.29",
 	"engines": {
 		"vscode": "^1.51.0"
 	},
@@ -154,6 +154,26 @@
 					"type": "string",
 					"default": "https://translate.google.com.hk/?sl=%INPUT_LANGUAGE%&tl=%OUTPUT_LANGUAGE%&text=%SELECTION%&op=translate",
 					"description": "Google Translate Engine"
+				},
+				"search-online.Yahoo": {
+					"type": "string",
+					"default": "https://search.yahoo.com/search?p=%SELECTION%",
+					"description": "Yahoo Engine"
+				},
+				"search-online.Wiki": {
+					"type": "string",
+					"default": "https://wikipedia.org/wiki/%SELECTION%",
+					"description": "Wiki Engine"
+				},
+				"search-online.Code Pen": {
+					"type": "string",
+					"default": "https://codepen.io/search/pens?q=%SELECTION%",
+					"description": "Code Pen Engine"
+				},
+				"search-online.Code Sandbox": {
+					"type": "string",
+					"default": "https://codesandbox.io/search?query=%SELECTION%",
+					"description": "Code Sandbox Engine"
 				},
 				"search-online.Google Translate Input Language": {
 					"type": "string",
@@ -393,24 +413,8 @@
 					"type": "array",
 					"default": [
 						{
-							"name": "Yahoo",
-							"url": "https://search.yahoo.com/search?p=%SELECTION%"
-						},
-						{
-							"name": "Wiki",
-							"url": "https://wikipedia.org/wiki/%SELECTION%"
-						},
-						{
 							"name": "Duck",
 							"url": "https://duckduckgo.com/?q=%SELECTION%"
-						},
-						{
-							"name": "Code Pen",
-							"url": "https://codepen.io/search/pens?q=%SELECTION%"
-						},
-						{
-							"name": "Code Sandbox",
-							"url": "https://codesandbox.io/search?query=%SELECTION%"
 						}
 					],
 					"description": "Add Search Engine"
