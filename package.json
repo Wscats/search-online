@@ -35,6 +35,8 @@
 		"duckduckgo",
 		"baidu",
 		"vscode",
+		"codepen",
+		"codesandbox",
 		"bing",
 		"github",
 		"npm",
@@ -401,6 +403,14 @@
 						{
 							"name": "Duck",
 							"url": "https://duckduckgo.com/?q=%SELECTION%"
+						},
+						{
+							"name": "Code Pen",
+							"url": "https://codepen.io/search/pens?q=%SELECTION%"
+						},
+						{
+							"name": "Code Sandbox",
+							"url": "https://codesandbox.io/search?query=%SELECTION%"
 						}
 					],
 					"description": "Add Search Engine"

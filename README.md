@@ -41,15 +41,18 @@ If necessary, you can change the request address of the search engine.
 
 The default request address format for each search is as follows. Note that the keywords searched in the link use `%SELECTION%` instead.
 
-| Engine | Url                                           |
-| ------ | --------------------------------------------- |
-| Google | https://www.google.com/search?q=%SELECTION%   |
-| Bing   | https://www.bing.com/search?q=%SELECTION%     |
-| Github | https://www.github.com/search?q=%SELECTION%   |
-| Baidu  | https://www.baidu.com/search?q=%SELECTION%    |
-| Npm    | https://www.npmjs.com/search?q=%SELECTION%    |
-| Yahoo  | https://search.yahoo.com/search?p=%SELECTION% |
-| Wiki   | https://wikipedia.org/wiki/%SELECTION%        |
+| Engine       | Url                                             |
+| ------------ | ----------------------------------------------- |
+| Google       | https://www.google.com/search?q=%SELECTION%     |
+| Bing         | https://www.bing.com/search?q=%SELECTION%       |
+| Github       | https://www.github.com/search?q=%SELECTION%     |
+| Baidu        | https://www.baidu.com/search?q=%SELECTION%      |
+| Npm          | https://www.npmjs.com/search?q=%SELECTION%      |
+| Yahoo        | https://search.yahoo.com/search?p=%SELECTION%   |
+| Wiki         | https://wikipedia.org/wiki/%SELECTION%          |
+| Duck         | https://duckduckgo.com/?q=%SELECTION%           |
+| Code Pen     | https://codepen.io/search/pens?q=%SELECTION%    |
+| Code Sandbox | https://codesandbox.io/search?query=%SELECTION% |
 
 Or modify the `.vscode/setting.json` file to change the default search engine. For example, modify to the following configuration, then every time you click on `Search Online`, you will use `Bing` to search for related content.
 
@@ -95,7 +98,7 @@ You can change the translation language configuration item of the extension to h
 <!-- <b><details><summary>Author Of Tencent Alloyteam Team</summary></b> -->
 
 | [<img src="https://avatars1.githubusercontent.com/u/17243165?s=460&v=4" width="60px;"/><br /><sub>Eno Yao</sub>](https://github.com/Wscats) |
-| - |
+| ------------------------------------------------------------------------------------------------------------------------------------------- |
 
 <!-- </details> -->
 
