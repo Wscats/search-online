@@ -1,4 +1,4 @@
-private static defaultDocs: object = {
+export const document = {
     "ahk": "https://autohotkey.com/docs/commands/${query}.htm",
     "controller": "http://api.rubyonrails.org/?q=${query}",
     "rb": "http://ruby-doc.com/search.html?q=${query}",
