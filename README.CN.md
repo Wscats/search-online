@@ -58,7 +58,7 @@
 | Code Pen     | https://codepen.io/search/pens?q=%SELECTION%    |
 | Code Sandbox | https://codesandbox.io/search?query=%SELECTION% |
 
-你还可以通过修改 `.vscode/setting.json` 文件，来设置默认搜索引擎，例如修改 `search-online.search-engine` 的配置参数为 `bing`，即可使用 `bing` 作为默认搜索引擎来搜索。
+你还可以通过修改 `.vscode/setting.json` 文件，来设置默认搜索引擎，例如修改 `search-online.search-engine` 的配置参数为 `Bing`，即可使用 `Bing` 作为默认搜索引擎来搜索。
 
 ```json
 {
