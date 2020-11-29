@@ -5,6 +5,8 @@
 <a href="https://github.com/Wscats/search-online"><img src="https://img.shields.io/badge/Github Page-Wscats-yellow" alt="Github Page" /></a>
 <a href="https://github.com/Wscats"><img src="https://img.shields.io/badge/Author-Eno Yao-blueviolet" alt="Eno Yao" /></a>
 
+[English](https://github.com/Wscats/search-online/blob/master/README.md) | [中文](https://gitee.com/wscats/search-online/blob/master/README.CN.md)
+
 A simple extension for VSCode to search or translate online easily using different engine.
 
 # How To Use
@@ -13,7 +15,7 @@ A simple extension for VSCode to search or translate online easily using differe
 
 You can select a keyword in the code, right-click to open the drop-down menu, select `Search Online`, it will automatically open the browser for you and search for related content.
 
-Or select a keyword in the code, use the shortcut key `cmd+q(mac)` / `ctrl+q(win)` to open the browser search results.
+Or select a keyword in the code, use the shortcut key `cmd+enter(mac)` / `ctrl+enter(win)` to open the browser search results.
 
 <!-- ![img](./img/2.gif?raw=true) -->
 ![2](https://user-images.githubusercontent.com/17243165/100498121-06e07f80-319b-11eb-90d5-68ab242824f1.gif)
@@ -22,7 +24,7 @@ Or select a keyword in the code, use the shortcut key `cmd+q(mac)` / `ctrl+q(win
 
 You can select a keyword in the code, right-click the drop-down menu and select `Traslate Online`, it will automatically open the browser and use Google Translate to help you translate the content.
 
-Or select a keyword in the code, use the shortcut key `cmd+r(mac) / ctrl+r(win)` to translate the content.
+Or select a keyword in the code, use the shortcut key `cmd+shift+enter(mac) / ctrl+shift+enter(win)` to translate the content.
 
 <!-- ![img](./img/1.gif?raw=true) -->
 ![1](https://user-images.githubusercontent.com/17243165/100498131-152e9b80-319b-11eb-82d1-4296aaf9f12f.gif)

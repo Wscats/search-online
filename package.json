@@ -2,7 +2,7 @@
 	"name": "search",
 	"displayName": "Search Hero - Google/Bing/Baidu/Wiki/Yahoo/Github/Npm Engine",
 	"description": "🔍Support search and translate online.",
-	"version": "1.0.31",
+	"version": "1.0.32",
 	"engines": {
 		"vscode": "^1.51.0"
 	},
@@ -77,16 +77,16 @@
 			{
 				"when": "editorHasSelection",
 				"command": "extension.search-online",
-				"key": "ctrl+q cmd+q",
-				"mac": "cmd+q",
-				"win": "ctrl+q"
+				"key": "ctrl+enter cmd+enter",
+				"mac": "cmd+enter",
+				"win": "ctrl+enter"
 			},
 			{
 				"when": "editorHasSelection",
 				"command": "extension.search-translate",
-				"key": "ctrl+r cmd+r",
-				"mac": "cmd+r",
-				"win": "ctrl+r"
+				"key": "ctrl+shift+enter cmd+shift+enter",
+				"mac": "cmd+shift+enter",
+				"win": "ctrl+shift+enter"
 			}
 		],
 		"commands": [

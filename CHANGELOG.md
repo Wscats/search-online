@@ -13,6 +13,7 @@
 - 2020-11-18 Support wikipedia site search.
 - 2020-11-20 Support duckduckgo site search.
 - 2020-11-24 Support codepen and codesandbox site search.
+- 2020-11-29 Improve Chinese documents and bind more convenient shortcut keys.
 
 # Unreleased
 
