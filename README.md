@@ -29,6 +29,11 @@ Or select a keyword in the code, use the shortcut key `cmd+shift+enter(mac) / ct
 <!-- ![img](./img/1.gif?raw=true) -->
 ![1](https://user-images.githubusercontent.com/17243165/100498131-152e9b80-319b-11eb-82d1-4296aaf9f12f.gif)
 
+Support offline dictionary search, select keywords in the code, the translation results will appear in the lower right corner of the bottom bar, if you want to view more detailed translation results, you can click the chinese translation results in the lower right corner of the bottom bar, and your default browser for online translation.
+
+![8](https://user-images.githubusercontent.com/17243165/100809200-92def980-3470-11eb-8daf-f7f950e8d69c.png)
+
+
 # Switch Search Engine
 
 You can switch between different search engines according to your needs, just click `Search Engine` in the bottom bar of vscode, and you can switch search engines. Google search used by the search engine by default.

@@ -1,8 +1,8 @@
 {
 	"name": "search",
-	"displayName": "Search Hero - Google/Bing/Baidu/Wiki/Yahoo/Github/Npm Engine",
-	"description": "🔍Support search and translate online.",
-	"version": "1.0.32",
+	"displayName": "Search/Translate Hero - Google/Translate/Bing/Baidu/Wiki/Yahoo/Github/Npm Engine",
+	"description": "🔍Support search online or translate online/offline.",
+	"version": "1.0.33",
 	"engines": {
 		"vscode": "^1.51.0"
 	},
@@ -43,7 +43,14 @@
 		"pypi",
 		"yahoo",
 		"wiki",
-		"engine"
+		"engine",
+		"dictionary",
+		"Chinese",
+		"English",
+		"搜索",
+		"翻译",
+		"offline",
+		"online"
 	],
 	"activationEvents": [
 		"*",
@@ -152,7 +159,7 @@
 				},
 				"search-online.Google Translate": {
 					"type": "string",
-					"default": "https://translate.google.com.hk/?sl=%INPUT_LANGUAGE%&tl=%OUTPUT_LANGUAGE%&text=%SELECTION%&op=translate",
+					"default": "https://translate.google.cn/?sl=%INPUT_LANGUAGE%&tl=%OUTPUT_LANGUAGE%&text=%SELECTION%&op=translate",
 					"description": "Google Translate Engine"
 				},
 				"search-online.Yahoo": {
