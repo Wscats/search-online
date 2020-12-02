@@ -113,9 +113,11 @@ You can change the translation language configuration item of the extension to h
 
 # Thanks
 
-<b><details><summary>Author Of Tencent Alloyteam Team</summary></b>
-| [<img src="https://avatars1.githubusercontent.com/u/17243165?s=460&v=4" width="60px;"/><br /><sub>Eno Yao</sub>](https://github.com/Wscats) |
-| - |
+<b><details><summary>Development Team</summary></b>
+
+| [<img src="https://avatars1.githubusercontent.com/u/17243165?s=460&v=4" width="60px;"/><br /><sub>Eno Yao</sub>](https://github.com/Wscats) |[<img src="https://avatars0.githubusercontent.com/u/30444763?s=200&v=4" width="60px;"/><br /><sub>中文编程</sub>](https://github.com/program-in-chinese) |
+| - | - |
+
 </details>
 
 If the extension can help you, please enter the [Rating & Review](https://marketplace.visualstudio.com/items?itemName=Wscats.search&ssr=false#review-details) link to give me a five-star praise.

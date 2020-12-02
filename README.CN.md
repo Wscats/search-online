@@ -103,10 +103,10 @@
 
 # 鸣谢
 
-<b><details><summary>腾讯 AlloyTeam 成员</summary></b>
+<b><details><summary>开发团队</summary></b>
 
-| [<img src="https://avatars1.githubusercontent.com/u/17243165?s=460&v=4" width="60px;"/><br /><sub>Eno Yao</sub>](https://github.com/Wscats) |
-| ------------------------------------------------------------------------------------------------------------------------------------------- |
+| [<img src="https://avatars1.githubusercontent.com/u/17243165?s=460&v=4" width="60px;"/><br /><sub>Eno Yao</sub>](https://github.com/Wscats) |[<img src="https://avatars0.githubusercontent.com/u/30444763?s=200&v=4" width="60px;"/><br /><sub>中文编程</sub>](https://github.com/program-in-chinese) |
+| - | - |
 
 </details>
 
