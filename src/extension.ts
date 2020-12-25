@@ -139,6 +139,14 @@ async function search({ searchType }: SearchType) {
 
 // @ts-ignore
 function 更新状态栏(状态框) {
+	// 是否显示右下角的提示条，默认不显示
+	const config = vscode.workspace.getConfiguration("search-online");
+	const isShowStatusBar = config.get<boolean>("show-status-bar");
+	if (!isShowStatusBar) {
+		状态框.hide();
+		return;
+	}
+
 	let 文本 = 取选中文本();
 	if (文本) {
 		状态框.text = "$(megaphone) " + 显示词条(显示简要信息(查询词条(文本)), 30);

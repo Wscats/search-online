@@ -27,7 +27,13 @@
 
 ![img](./img/1.gif?raw=true)
 
-支持离线词典的搜索，选中代码中的关键词，翻译结果会出现在底部栏右下角，如果你想查看更详细的翻译结果，可以点击底部栏右下角的中文翻译结果，此时会打开你的默认浏览器进行线上翻译。
+支持离线词典的搜索，只需打开设置 `search-online.show-status-bar` 为 `true` 把开关打开(默认关闭)，选中代码中的关键词，翻译结果会出现在底部栏右下角，如果你想查看更详细的翻译结果，可以点击底部栏右下角的中文翻译结果，此时会打开你的默认浏览器进行线上翻译。
+
+```json
+{
+  "search-online.show-status-bar": true
+}
+```
 
 ![img](./img/8.png?raw=true)
 
@@ -87,7 +93,7 @@
 }
 ```
 
-你还可以通过可视化界面来增加搜索引擎，在切换引擎的面板底部点击 `➕ Add Search Engine`，然后会出现两次输入框，分别填入如以下内容，即可增加搜索引擎↓
+你还可以通过可视化界面来增加搜索引擎，在切换引擎的面板底部点击 `➕ Add Search Engine`，然后会出现两次输入框，分别填入如以下内容，即可增加搜索引擎 ↓
 
 > name: Visual Studio Marketplace
 
@@ -105,7 +111,7 @@
 
 <b><details><summary>开发团队</summary></b>
 
-| [<img src="https://avatars1.githubusercontent.com/u/17243165?s=460&v=4" width="60px;"/><br /><sub>Eno Yao</sub>](https://github.com/Wscats) |[<img src="https://avatars0.githubusercontent.com/u/30444763?s=200&v=4" width="60px;"/><br /><sub>中文编程</sub>](https://github.com/program-in-chinese) |
+| [<img src="https://avatars1.githubusercontent.com/u/17243165?s=460&v=4" width="60px;"/><br /><sub>Eno Yao</sub>](https://github.com/Wscats) | [<img src="https://avatars0.githubusercontent.com/u/30444763?s=200&v=4" width="60px;"/><br /><sub>中文编程</sub>](https://github.com/program-in-chinese) |
 | - | - |
 
 </details>

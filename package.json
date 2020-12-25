@@ -2,7 +2,7 @@
 	"name": "search",
 	"displayName": "Search/Translate Hero - Google/Translate/Bing/Baidu/Wiki/Yahoo/Github/Npm Engine",
 	"description": "🔍Support search online or translate online/offline.",
-	"version": "1.0.36",
+	"version": "1.0.37",
 	"engines": {
 		"vscode": "^1.51.0"
 	},
@@ -114,6 +114,11 @@
 			"title": "Search Online Config",
 			"type": "object",
 			"properties": {
+				"search-online.show-status-bar": {
+					"type": "boolean",
+					"default": false,
+					"description": "Show/Hide Status Bar"
+				},
 				"search-online.search-engine": {
 					"type": "string",
 					"enum": [

@@ -14,6 +14,7 @@
 - 2020-11-20 Support duckduckgo site search.
 - 2020-11-24 Support codepen and codesandbox site search.
 - 2020-11-29 Improve Chinese documents and bind more convenient shortcut keys.
+- 2020-12-25 Improve the startup speed, add offline dictionary switch.
 
 # Unreleased
 
