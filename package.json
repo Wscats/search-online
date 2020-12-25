@@ -53,7 +53,7 @@
 		"online"
 	],
 	"activationEvents": [
-		"*",
+		"onStartupFinished",
 		"onCommand:extension.search-online",
 		"onCommand:extension.search-engine",
 		"onCommand:extension.search-switch",
