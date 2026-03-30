@@ -30,7 +30,7 @@ export function 选取释义(所有词条: 模型.单词条[], 所有词: string
   let 所有释义 = [];
 
   // TODO: 重构
-  if (所有词条.length == 2) {
+  if (所有词条.length === 2) {
     let 词1释义 = 所有词条[0].释义;
     let 词2释义 = 所有词条[1].释义;
     if (词1释义 && 取按词性释义(词1释义).has(词典常量.词性_形容词)
@@ -79,10 +79,10 @@ export function 取原型(词: string, 词形): string {
     let 原词 = 词;
     let 为复数形式 = false;
     for (let 某词形 of 词形) {
-      if (某词形.类型 == "原型变换形式" && (某词形.变化.includes("名词复数形式") || 某词形.变化.includes("现在分词"))) {
+      if (某词形.类型 === "原型变换形式" && (某词形.变化.includes("名词复数形式") || 某词形.变化.includes("现在分词"))) {
         为复数形式 = true;
       }
-      if (某词形.类型 == "原型") {
+      if (某词形.类型 === "原型") {
         原词 = 某词形.变化;
       }
     }
@@ -140,7 +140,7 @@ export function 消除英文小括号内容(字符串: string): string {
 function 消除括号内容(中文释义: string, 开括号: string, 闭括号: string): string {
   let 开括号位置 = 中文释义.indexOf(开括号);
   let 闭括号位置 = 中文释义.indexOf(闭括号);
-  if (开括号位置 == -1 || 闭括号位置 == -1) {
+  if (开括号位置 === -1 || 闭括号位置 === -1) {
     return 中文释义;
   }
   let 括号内容 = 中文释义.substring(开括号位置, 闭括号位置 + 1);

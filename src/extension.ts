@@ -169,7 +169,7 @@ function 查询词条(英文: string): 模型.字段释义 {
 	return 查词.取释义(英文);
 }
 
-function 显示词条(显示: any, 最大长度: number): string {
+function 显示词条(显示: unknown, 最大长度: number): string {
 	return 显示.length > 最大长度 ? 显示.substring(0, 最大长度 - 1) + "..." : 显示;
 }
 
@@ -177,7 +177,7 @@ function 显示简要信息(查字段结果: 模型.字段释义): string {
 	if (!查字段结果.释义) {
 		return "查无结果: " + 查字段结果.原字段;
 	}
-	if (查字段结果.各词.length == 1) {
+	if (查字段结果.各词.length === 1) {
 		return 取单词条信息(查字段结果.各词[0], false);
 	} else {
 		return 查字段结果.释义;
@@ -186,7 +186,7 @@ function 显示简要信息(查字段结果: 模型.字段释义): string {
 
 function 显示字段信息(查字段结果: 模型.字段释义): string {
 	// 长度必大于0
-	if (查字段结果.各词.length == 1) {
+	if (查字段结果.各词.length === 1) {
 		return 取单词条信息(查字段结果.各词[0], true);
 	} else {
 		let 翻译 = "";

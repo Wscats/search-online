@@ -4,7 +4,8 @@
   "description": "🔍Support search online or translate online/offline.",
   "version": "1.0.37",
   "engines": {
-    "vscode": "^1.51.0"
+    "vscode": "^1.51.0",
+    "node": ">=18.0.0"
   },
   "publisher": "Wscats",
   "categories": [
@@ -442,7 +443,10 @@
     "watch": "tsc -watch -p ./",
     "pretest": "npm run compile && npm run lint",
     "test": "node ./out/test/runTest.js",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "lint:check": "eslint . --ext .ts,.tsx,.js,.jsx",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "devDependencies": {
     "@types/vscode": "^1.51.0",
@@ -456,5 +460,9 @@
     "mocha": "^8.1.3",
     "typescript": "^4.0.2",
     "vscode-test": "^1.4.0"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wscats/search-online/issues"
   }
 }

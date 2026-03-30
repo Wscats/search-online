@@ -64,12 +64,12 @@ export const defaultBrowser = (): string => {
 };
 
 export const open = (path: string, browser: string | string[]) => {
-    opn(path, { app: browser }).catch((err: any) => {
+    opn(path, { app: browser }).catch((err: unknown) => {
         vscode.window.showErrorMessage(`Open browser failed!! Please check if you have installed the browser ${browser} correctly!`);
     });
 };
 
-export const openBrowser = (path: any): void => {
+export const openBrowser = (path: unknown): void => {
     const browser = standardizedBrowserName(defaultBrowser());
     open(path, browser);
 };

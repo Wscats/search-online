@@ -23,7 +23,7 @@ export function 取释义(选中文本: string): 模型.字段释义 {
   for (let 单词 of 所有词) {
     let 处理后词 = 单词;
 
-    if (处理后词 != 单词.toUpperCase()) {
+    if (处理后词 !== 单词.toUpperCase()) {
       处理后词 = 单词.toLowerCase();
     } else {
       // 应付全大写词, 多见于常量, 如SHIPMENT
@@ -65,7 +65,7 @@ export function 取释义(选中文本: string): 模型.字段释义 {
     } else {
       释义 = 逐词翻译(选中文本, 所有词条, 所有词);
     }
-  } else if (所有词条.length == 1) {
+  } else if (所有词条.length === 1) {
     // TODO: 简化词条 (以适应状态栏宽度)
     释义 = 所有词条[0].释义;
   }
@@ -119,7 +119,7 @@ function 提取词形(原字符串: string): 模型.词形变化[] {
     // @ts-ignore
     let 类型 = 词形类型[分段[0]];
     let 原型变化形式 = [];
-    if (类型 == 词形_原型变换形式) {
+    if (类型 === 词形_原型变换形式) {
       for (let 变化形式 of 分段[1]) {
         // @ts-ignore
         原型变化形式.push(词形类型[变化形式]);
@@ -128,7 +128,7 @@ function 提取词形(原字符串: string): 模型.词形变化[] {
     // 如hyphen(vt): s:hyphens/p:hyphened/i:/3:hyphens/d:, i与d内容缺失, 用空字符串占位
     变化.push({
       类型: 类型,
-      变化: 分段.length == 1 ? "" : (类型 == 词形_原型变换形式 ? 原型变化形式 : 分段[1])}
+      变化: 分段.length === 1 ? "" : (类型 === 词形_原型变换形式 ? 原型变化形式 : 分段[1])}
     );
   }
   // @ts-ignore
