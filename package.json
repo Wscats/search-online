@@ -1,459 +1,460 @@
 {
-	"name": "search",
-	"displayName": "Search/Translate Hero - Google/Translate/Bing/Baidu/Wiki/Yahoo/Github/Npm Engine",
-	"description": "🔍Support search online or translate online/offline.",
-	"version": "1.0.37",
-	"engines": {
-		"vscode": "^1.51.0"
-	},
-	"publisher": "Wscats",
-	"categories": [
-		"Other",
-		"Programming Languages",
-		"Formatters"
-	],
-	"author": {
-		"name": "Eno Yao",
-		"url": "https://github.com/Wscats/search-online"
-	},
-	"galleryBanner": {
-		"color": "#232323",
-		"theme": "dark"
-	},
-	"icon": "img/icon.png",
-	"homepage": "https://github.com/Wscats/search-online",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/Wscats/search-online"
-	},
-	"keywords": [
-		"search",
-		"google",
-		"translate",
-		"google translate",
-		"stackoverflow",
-		"duckduckgo",
-		"baidu",
-		"vscode",
-		"codepen",
-		"codesandbox",
-		"bing",
-		"github",
-		"npm",
-		"pypi",
-		"yahoo",
-		"wiki",
-		"engine",
-		"dictionary",
-		"Chinese",
-		"English",
-		"搜索",
-		"翻译",
-		"offline",
-		"online"
-	],
-	"activationEvents": [
-		"onStartupFinished",
-		"onCommand:extension.search-online",
-		"onCommand:extension.search-engine",
-		"onCommand:extension.search-switch",
-		"onCommand:extension.search-translate"
-	],
-	"main": "./out/extension.js",
-	"contributes": {
-		"menus": {
-			"editor/context": [
-				{
-					"when": "editorHasSelection",
-					"command": "extension.search-online",
-					"group": "navigation"
-				},
-				{
-					"when": "editorHasSelection",
-					"command": "extension.search-translate",
-					"group": "navigation"
-				},
-				{
-					"when": "editorHasSelection",
-					"command": "extension.search-switch",
-					"group": "navigation"
-				}
-			]
-		},
-		"keybindings": [
-			{
-				"when": "editorHasSelection",
-				"command": "extension.search-online",
-				"key": "ctrl+enter cmd+enter",
-				"mac": "cmd+enter",
-				"win": "ctrl+enter"
-			},
-			{
-				"when": "editorHasSelection",
-				"command": "extension.search-translate",
-				"key": "ctrl+shift+enter cmd+shift+enter",
-				"mac": "cmd+shift+enter",
-				"win": "ctrl+shift+enter"
-			}
-		],
-		"commands": [
-			{
-				"command": "extension.search-online",
-				"title": "Search Online"
-			},
-			{
-				"command": "extension.search-translate",
-				"title": "Translate Online"
-			},
-			{
-				"command": "extension.search-switch",
-				"title": "Search Online By Switch Engine"
-			}
-		],
-		"configuration": {
-			"title": "Search Online Config",
-			"type": "object",
-			"properties": {
-				"search-online.show-status-bar": {
-					"type": "boolean",
-					"default": false,
-					"description": "Show/Hide Status Bar"
-				},
-				"search-online.search-engine": {
-					"type": "string",
-					"enum": [
-						"Google",
-						"Bing",
-						"Baidu",
-						"Npm",
-						"Github",
-						"Google Translate"
-					],
-					"default": "Google",
-					"description": "Search Engine"
-				},
-				"search-online.Google": {
-					"type": "string",
-					"default": "https://www.google.com/search?q=%SELECTION%",
-					"description": "Google Search Engine"
-				},
-				"search-online.Bing": {
-					"type": "string",
-					"default": "https://www.bing.com/search?q=%SELECTION%",
-					"description": "Bing Search Engine"
-				},
-				"search-online.Baidu": {
-					"type": "string",
-					"default": "https://www.baidu.com/s?wd=%SELECTION%",
-					"description": "Baidu Search Engine"
-				},
-				"search-online.Npm": {
-					"type": "string",
-					"default": "https://www.npmjs.com/search?q=%SELECTION%",
-					"description": "Npm Search Engine"
-				},
-				"search-online.Github": {
-					"type": "string",
-					"default": "https://github.com/search?q=%SELECTION%",
-					"description": "Github Search Engine"
-				},
-				"search-online.Stack Overflow": {
-					"type": "string",
-					"default": "https://stackoverflow.com/search?q=%SELECTION%",
-					"description": "Stack Overflow Engine"
-				},
-				"search-online.Google Translate": {
-					"type": "string",
-					"default": "https://translate.google.cn/?sl=%INPUT_LANGUAGE%&tl=%OUTPUT_LANGUAGE%&text=%SELECTION%&op=translate",
-					"description": "Google Translate Engine"
-				},
-				"search-online.Yahoo": {
-					"type": "string",
-					"default": "https://search.yahoo.com/search?p=%SELECTION%",
-					"description": "Yahoo Engine"
-				},
-				"search-online.Wiki": {
-					"type": "string",
-					"default": "https://wikipedia.org/wiki/%SELECTION%",
-					"description": "Wiki Engine"
-				},
-				"search-online.Code Pen": {
-					"type": "string",
-					"default": "https://codepen.io/search/pens?q=%SELECTION%",
-					"description": "Code Pen Engine"
-				},
-				"search-online.Code Sandbox": {
-					"type": "string",
-					"default": "https://codesandbox.io/search?query=%SELECTION%",
-					"description": "Code Sandbox Engine"
-				},
-				"search-online.Google Translate Input Language": {
-					"type": "string",
-					"enum": [
-						"English/英语",
-						"Chinese/中文",
-						"Japanese/日语",
-						"Albanian/阿尔巴尼亚语",
-						"Arabic/阿拉伯语",
-						"Amharic/阿姆哈拉语",
-						"Azerbaijani/阿塞拜疆语",
-						"Irish/爱尔兰语",
-						"Estonian/爱沙尼亚语",
-						"Oriya/奥利亚语",
-						"Basque/巴斯克语",
-						"Belarusian/白俄罗斯语",
-						"Bulgarian/保加利亚语",
-						"Icelandic/冰岛语",
-						"Polish/波兰语",
-						"Bosnian/波斯尼亚语",
-						"Persian/波斯语",
-						"Boolean (Afrikaans)/布尔语(南非荷兰语)",
-						"Tatar/鞑靼语",
-						"Danish/丹麦语",
-						"German/德语",
-						"Russian/俄语",
-						"French/法语",
-						"Filipino/菲律宾语",
-						"Finnish/芬兰语",
-						"Frisian/弗里西语",
-						"Khmer/高棉语",
-						"Georgian/格鲁吉亚语",
-						"Gujarati/古吉拉特语",
-						"Kazakh/哈萨克语",
-						"Haiti Creole/海地克里奥尔语",
-						"Korean/韩语",
-						"Hausa/豪萨语",
-						"Dutch/荷兰语",
-						"Kyrgyz/吉尔吉斯语",
-						"Galician/加利西亚语",
-						"Catalan/加泰罗尼亚语",
-						"Czech/捷克语",
-						"Kannada/卡纳达语",
-						"Corsican/科西嘉语",
-						"Croatian/克罗地亚语",
-						"Kurdish/库尔德语",
-						"Latin/拉丁语",
-						"Latvian/拉脱维亚语",
-						"Laotian/老挝语",
-						"Lithuanian/立陶宛语",
-						"Luxembourgish/卢森堡语",
-						"Rwandan/卢旺达语",
-						"Romanian/罗马尼亚语",
-						"Malagasy/马尔加什语",
-						"Maltese/马耳他语",
-						"Marathi/马拉地语",
-						"Malayalam/马拉雅拉姆语",
-						"Malay/马来语",
-						"Macedonian/马其顿语",
-						"Maori/毛利语",
-						"Mongolian/蒙古语",
-						"Bengali/孟加拉语",
-						"Burmese/缅甸语",
-						"Miao language/苗语",
-						"South African Xhosa/南非科萨语",
-						"South African Zulu/南非祖鲁语",
-						"Nepalese/尼泊尔语",
-						"Norwegian/挪威语",
-						"Punjabi/旁遮普语",
-						"Portuguese/葡萄牙语",
-						"Pashto/普什图语",
-						"Chichewa/齐切瓦语",
-						"Swedish/瑞典语",
-						"Samoan/萨摩亚语",
-						"Serbian/塞尔维亚语",
-						"Sesotho/塞索托语",
-						"Sinhala/僧伽罗语",
-						"Esperanto/世界语",
-						"Slovak/斯洛伐克语",
-						"Slovenian/斯洛文尼亚语",
-						"Swahili/斯瓦希里语",
-						"Scottish Gaelic/苏格兰盖尔语",
-						"Cebuano/宿务语",
-						"Somali/索马里语",
-						"Tajik/塔吉克语",
-						"Telugu/泰卢固语",
-						"Tamil/泰米尔语",
-						"Thai/泰语",
-						"Turkish/土耳其语",
-						"Turkmen/土库曼语",
-						"Welsh/威尔士语",
-						"Uyghur/维吾尔语",
-						"Urdu/乌尔都语",
-						"Ukrainian/乌克兰语",
-						"Uzbek/乌兹别克语",
-						"Spanish/西班牙语",
-						"Hebrew/希伯来语",
-						"Greek/希腊语",
-						"Hawaiian/夏威夷语",
-						"Sin German/信德语",
-						"Hungarian/匈牙利语",
-						"Shona/修纳语",
-						"Armenian/亚美尼亚语",
-						"Igbo/伊博语",
-						"Italian/意大利语",
-						"Yiddish/意第绪语",
-						"Hindi/印地语",
-						"Indonesian Sundanese/印尼巽他语",
-						"Indonesian/印尼语",
-						"Javanese/印尼爪哇语",
-						"Yoruba/约鲁巴语",
-						"Vietnamese/越南语",
-						"Chinese/中文",
-						"Chinese (Simplified)/中文（简体）"
-					],
-					"default": "English/英语",
-					"description": "Language to be translated"
-				},
-				"search-online.Google Translate Output Language": {
-					"type": "string",
-					"enum": [
-						"English/英语",
-						"Chinese/中文",
-						"Japanese/日语",
-						"Albanian/阿尔巴尼亚语",
-						"Arabic/阿拉伯语",
-						"Amharic/阿姆哈拉语",
-						"Azerbaijani/阿塞拜疆语",
-						"Irish/爱尔兰语",
-						"Estonian/爱沙尼亚语",
-						"Oriya/奥利亚语",
-						"Basque/巴斯克语",
-						"Belarusian/白俄罗斯语",
-						"Bulgarian/保加利亚语",
-						"Icelandic/冰岛语",
-						"Polish/波兰语",
-						"Bosnian/波斯尼亚语",
-						"Persian/波斯语",
-						"Boolean (Afrikaans)/布尔语(南非荷兰语)",
-						"Tatar/鞑靼语",
-						"Danish/丹麦语",
-						"German/德语",
-						"Russian/俄语",
-						"French/法语",
-						"Filipino/菲律宾语",
-						"Finnish/芬兰语",
-						"Frisian/弗里西语",
-						"Khmer/高棉语",
-						"Georgian/格鲁吉亚语",
-						"Gujarati/古吉拉特语",
-						"Kazakh/哈萨克语",
-						"Haiti Creole/海地克里奥尔语",
-						"Korean/韩语",
-						"Hausa/豪萨语",
-						"Dutch/荷兰语",
-						"Kyrgyz/吉尔吉斯语",
-						"Galician/加利西亚语",
-						"Catalan/加泰罗尼亚语",
-						"Czech/捷克语",
-						"Kannada/卡纳达语",
-						"Corsican/科西嘉语",
-						"Croatian/克罗地亚语",
-						"Kurdish/库尔德语",
-						"Latin/拉丁语",
-						"Latvian/拉脱维亚语",
-						"Laotian/老挝语",
-						"Lithuanian/立陶宛语",
-						"Luxembourgish/卢森堡语",
-						"Rwandan/卢旺达语",
-						"Romanian/罗马尼亚语",
-						"Malagasy/马尔加什语",
-						"Maltese/马耳他语",
-						"Marathi/马拉地语",
-						"Malayalam/马拉雅拉姆语",
-						"Malay/马来语",
-						"Macedonian/马其顿语",
-						"Maori/毛利语",
-						"Mongolian/蒙古语",
-						"Bengali/孟加拉语",
-						"Burmese/缅甸语",
-						"Miao language/苗语",
-						"South African Xhosa/南非科萨语",
-						"South African Zulu/南非祖鲁语",
-						"Nepalese/尼泊尔语",
-						"Norwegian/挪威语",
-						"Punjabi/旁遮普语",
-						"Portuguese/葡萄牙语",
-						"Pashto/普什图语",
-						"Chichewa/齐切瓦语",
-						"Swedish/瑞典语",
-						"Samoan/萨摩亚语",
-						"Serbian/塞尔维亚语",
-						"Sesotho/塞索托语",
-						"Sinhala/僧伽罗语",
-						"Esperanto/世界语",
-						"Slovak/斯洛伐克语",
-						"Slovenian/斯洛文尼亚语",
-						"Swahili/斯瓦希里语",
-						"Scottish Gaelic/苏格兰盖尔语",
-						"Cebuano/宿务语",
-						"Somali/索马里语",
-						"Tajik/塔吉克语",
-						"Telugu/泰卢固语",
-						"Tamil/泰米尔语",
-						"Thai/泰语",
-						"Turkish/土耳其语",
-						"Turkmen/土库曼语",
-						"Welsh/威尔士语",
-						"Uyghur/维吾尔语",
-						"Urdu/乌尔都语",
-						"Ukrainian/乌克兰语",
-						"Uzbek/乌兹别克语",
-						"Spanish/西班牙语",
-						"Hebrew/希伯来语",
-						"Greek/希腊语",
-						"Hawaiian/夏威夷语",
-						"Sin German/信德语",
-						"Hungarian/匈牙利语",
-						"Shona/修纳语",
-						"Armenian/亚美尼亚语",
-						"Igbo/伊博语",
-						"Italian/意大利语",
-						"Yiddish/意第绪语",
-						"Hindi/印地语",
-						"Indonesian Sundanese/印尼巽他语",
-						"Indonesian/印尼语",
-						"Javanese/印尼爪哇语",
-						"Yoruba/约鲁巴语",
-						"Vietnamese/越南语",
-						"Chinese (Simplified)/中文（简体）",
-						"Chinese (Traditional)/中文（繁体）"
-					],
-					"default": "Chinese/中文",
-					"description": "Translated language"
-				},
-				"search-online.add-search-engine": {
-					"type": "array",
-					"default": [
-						{
-							"name": "Duck",
-							"url": "https://duckduckgo.com/?q=%SELECTION%"
-						}
-					],
-					"description": "Add Search Engine"
-				}
-			}
-		}
-	},
-	"scripts": {
-		"build": "vsce package",
-		"vscode:prepublish": "npm run compile",
-		"compile": "tsc -p ./",
-		"lint": "eslint src --ext ts",
-		"watch": "tsc -watch -p ./",
-		"pretest": "npm run compile && npm run lint",
-		"test": "node ./out/test/runTest.js"
-	},
-	"devDependencies": {
-		"@types/vscode": "^1.51.0",
-		"@types/glob": "^7.1.3",
-		"@types/mocha": "^8.0.0",
-		"@types/node": "^12.11.7",
-		"eslint": "^7.9.0",
-		"@typescript-eslint/eslint-plugin": "^4.1.1",
-		"@typescript-eslint/parser": "^4.1.1",
-		"glob": "^7.1.6",
-		"mocha": "^8.1.3",
-		"typescript": "^4.0.2",
-		"vscode-test": "^1.4.0"
-	}
+  "name": "search",
+  "displayName": "Search/Translate Hero - Google/Translate/Bing/Baidu/Wiki/Yahoo/Github/Npm Engine",
+  "description": "🔍Support search online or translate online/offline.",
+  "version": "1.0.37",
+  "engines": {
+    "vscode": "^1.51.0"
+  },
+  "publisher": "Wscats",
+  "categories": [
+    "Other",
+    "Programming Languages",
+    "Formatters"
+  ],
+  "author": {
+    "name": "Eno Yao",
+    "url": "https://github.com/Wscats/search-online"
+  },
+  "galleryBanner": {
+    "color": "#232323",
+    "theme": "dark"
+  },
+  "icon": "img/icon.png",
+  "homepage": "https://github.com/Wscats/search-online",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Wscats/search-online"
+  },
+  "keywords": [
+    "search",
+    "google",
+    "translate",
+    "google translate",
+    "stackoverflow",
+    "duckduckgo",
+    "baidu",
+    "vscode",
+    "codepen",
+    "codesandbox",
+    "bing",
+    "github",
+    "npm",
+    "pypi",
+    "yahoo",
+    "wiki",
+    "engine",
+    "dictionary",
+    "Chinese",
+    "English",
+    "搜索",
+    "翻译",
+    "offline",
+    "online"
+  ],
+  "activationEvents": [
+    "onStartupFinished",
+    "onCommand:extension.search-online",
+    "onCommand:extension.search-engine",
+    "onCommand:extension.search-switch",
+    "onCommand:extension.search-translate"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "menus": {
+      "editor/context": [
+        {
+          "when": "editorHasSelection",
+          "command": "extension.search-online",
+          "group": "navigation"
+        },
+        {
+          "when": "editorHasSelection",
+          "command": "extension.search-translate",
+          "group": "navigation"
+        },
+        {
+          "when": "editorHasSelection",
+          "command": "extension.search-switch",
+          "group": "navigation"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "when": "editorHasSelection",
+        "command": "extension.search-online",
+        "key": "ctrl+enter cmd+enter",
+        "mac": "cmd+enter",
+        "win": "ctrl+enter"
+      },
+      {
+        "when": "editorHasSelection",
+        "command": "extension.search-translate",
+        "key": "ctrl+shift+enter cmd+shift+enter",
+        "mac": "cmd+shift+enter",
+        "win": "ctrl+shift+enter"
+      }
+    ],
+    "commands": [
+      {
+        "command": "extension.search-online",
+        "title": "Search Online"
+      },
+      {
+        "command": "extension.search-translate",
+        "title": "Translate Online"
+      },
+      {
+        "command": "extension.search-switch",
+        "title": "Search Online By Switch Engine"
+      }
+    ],
+    "configuration": {
+      "title": "Search Online Config",
+      "type": "object",
+      "properties": {
+        "search-online.show-status-bar": {
+          "type": "boolean",
+          "default": false,
+          "description": "Show/Hide Status Bar"
+        },
+        "search-online.search-engine": {
+          "type": "string",
+          "enum": [
+            "Google",
+            "Bing",
+            "Baidu",
+            "Npm",
+            "Github",
+            "Google Translate"
+          ],
+          "default": "Google",
+          "description": "Search Engine"
+        },
+        "search-online.Google": {
+          "type": "string",
+          "default": "https://www.google.com/search?q=%SELECTION%",
+          "description": "Google Search Engine"
+        },
+        "search-online.Bing": {
+          "type": "string",
+          "default": "https://www.bing.com/search?q=%SELECTION%",
+          "description": "Bing Search Engine"
+        },
+        "search-online.Baidu": {
+          "type": "string",
+          "default": "https://www.baidu.com/s?wd=%SELECTION%",
+          "description": "Baidu Search Engine"
+        },
+        "search-online.Npm": {
+          "type": "string",
+          "default": "https://www.npmjs.com/search?q=%SELECTION%",
+          "description": "Npm Search Engine"
+        },
+        "search-online.Github": {
+          "type": "string",
+          "default": "https://github.com/search?q=%SELECTION%",
+          "description": "Github Search Engine"
+        },
+        "search-online.Stack Overflow": {
+          "type": "string",
+          "default": "https://stackoverflow.com/search?q=%SELECTION%",
+          "description": "Stack Overflow Engine"
+        },
+        "search-online.Google Translate": {
+          "type": "string",
+          "default": "https://translate.google.cn/?sl=%INPUT_LANGUAGE%&tl=%OUTPUT_LANGUAGE%&text=%SELECTION%&op=translate",
+          "description": "Google Translate Engine"
+        },
+        "search-online.Yahoo": {
+          "type": "string",
+          "default": "https://search.yahoo.com/search?p=%SELECTION%",
+          "description": "Yahoo Engine"
+        },
+        "search-online.Wiki": {
+          "type": "string",
+          "default": "https://wikipedia.org/wiki/%SELECTION%",
+          "description": "Wiki Engine"
+        },
+        "search-online.Code Pen": {
+          "type": "string",
+          "default": "https://codepen.io/search/pens?q=%SELECTION%",
+          "description": "Code Pen Engine"
+        },
+        "search-online.Code Sandbox": {
+          "type": "string",
+          "default": "https://codesandbox.io/search?query=%SELECTION%",
+          "description": "Code Sandbox Engine"
+        },
+        "search-online.Google Translate Input Language": {
+          "type": "string",
+          "enum": [
+            "English/英语",
+            "Chinese/中文",
+            "Japanese/日语",
+            "Albanian/阿尔巴尼亚语",
+            "Arabic/阿拉伯语",
+            "Amharic/阿姆哈拉语",
+            "Azerbaijani/阿塞拜疆语",
+            "Irish/爱尔兰语",
+            "Estonian/爱沙尼亚语",
+            "Oriya/奥利亚语",
+            "Basque/巴斯克语",
+            "Belarusian/白俄罗斯语",
+            "Bulgarian/保加利亚语",
+            "Icelandic/冰岛语",
+            "Polish/波兰语",
+            "Bosnian/波斯尼亚语",
+            "Persian/波斯语",
+            "Boolean (Afrikaans)/布尔语(南非荷兰语)",
+            "Tatar/鞑靼语",
+            "Danish/丹麦语",
+            "German/德语",
+            "Russian/俄语",
+            "French/法语",
+            "Filipino/菲律宾语",
+            "Finnish/芬兰语",
+            "Frisian/弗里西语",
+            "Khmer/高棉语",
+            "Georgian/格鲁吉亚语",
+            "Gujarati/古吉拉特语",
+            "Kazakh/哈萨克语",
+            "Haiti Creole/海地克里奥尔语",
+            "Korean/韩语",
+            "Hausa/豪萨语",
+            "Dutch/荷兰语",
+            "Kyrgyz/吉尔吉斯语",
+            "Galician/加利西亚语",
+            "Catalan/加泰罗尼亚语",
+            "Czech/捷克语",
+            "Kannada/卡纳达语",
+            "Corsican/科西嘉语",
+            "Croatian/克罗地亚语",
+            "Kurdish/库尔德语",
+            "Latin/拉丁语",
+            "Latvian/拉脱维亚语",
+            "Laotian/老挝语",
+            "Lithuanian/立陶宛语",
+            "Luxembourgish/卢森堡语",
+            "Rwandan/卢旺达语",
+            "Romanian/罗马尼亚语",
+            "Malagasy/马尔加什语",
+            "Maltese/马耳他语",
+            "Marathi/马拉地语",
+            "Malayalam/马拉雅拉姆语",
+            "Malay/马来语",
+            "Macedonian/马其顿语",
+            "Maori/毛利语",
+            "Mongolian/蒙古语",
+            "Bengali/孟加拉语",
+            "Burmese/缅甸语",
+            "Miao language/苗语",
+            "South African Xhosa/南非科萨语",
+            "South African Zulu/南非祖鲁语",
+            "Nepalese/尼泊尔语",
+            "Norwegian/挪威语",
+            "Punjabi/旁遮普语",
+            "Portuguese/葡萄牙语",
+            "Pashto/普什图语",
+            "Chichewa/齐切瓦语",
+            "Swedish/瑞典语",
+            "Samoan/萨摩亚语",
+            "Serbian/塞尔维亚语",
+            "Sesotho/塞索托语",
+            "Sinhala/僧伽罗语",
+            "Esperanto/世界语",
+            "Slovak/斯洛伐克语",
+            "Slovenian/斯洛文尼亚语",
+            "Swahili/斯瓦希里语",
+            "Scottish Gaelic/苏格兰盖尔语",
+            "Cebuano/宿务语",
+            "Somali/索马里语",
+            "Tajik/塔吉克语",
+            "Telugu/泰卢固语",
+            "Tamil/泰米尔语",
+            "Thai/泰语",
+            "Turkish/土耳其语",
+            "Turkmen/土库曼语",
+            "Welsh/威尔士语",
+            "Uyghur/维吾尔语",
+            "Urdu/乌尔都语",
+            "Ukrainian/乌克兰语",
+            "Uzbek/乌兹别克语",
+            "Spanish/西班牙语",
+            "Hebrew/希伯来语",
+            "Greek/希腊语",
+            "Hawaiian/夏威夷语",
+            "Sin German/信德语",
+            "Hungarian/匈牙利语",
+            "Shona/修纳语",
+            "Armenian/亚美尼亚语",
+            "Igbo/伊博语",
+            "Italian/意大利语",
+            "Yiddish/意第绪语",
+            "Hindi/印地语",
+            "Indonesian Sundanese/印尼巽他语",
+            "Indonesian/印尼语",
+            "Javanese/印尼爪哇语",
+            "Yoruba/约鲁巴语",
+            "Vietnamese/越南语",
+            "Chinese/中文",
+            "Chinese (Simplified)/中文（简体）"
+          ],
+          "default": "English/英语",
+          "description": "Language to be translated"
+        },
+        "search-online.Google Translate Output Language": {
+          "type": "string",
+          "enum": [
+            "English/英语",
+            "Chinese/中文",
+            "Japanese/日语",
+            "Albanian/阿尔巴尼亚语",
+            "Arabic/阿拉伯语",
+            "Amharic/阿姆哈拉语",
+            "Azerbaijani/阿塞拜疆语",
+            "Irish/爱尔兰语",
+            "Estonian/爱沙尼亚语",
+            "Oriya/奥利亚语",
+            "Basque/巴斯克语",
+            "Belarusian/白俄罗斯语",
+            "Bulgarian/保加利亚语",
+            "Icelandic/冰岛语",
+            "Polish/波兰语",
+            "Bosnian/波斯尼亚语",
+            "Persian/波斯语",
+            "Boolean (Afrikaans)/布尔语(南非荷兰语)",
+            "Tatar/鞑靼语",
+            "Danish/丹麦语",
+            "German/德语",
+            "Russian/俄语",
+            "French/法语",
+            "Filipino/菲律宾语",
+            "Finnish/芬兰语",
+            "Frisian/弗里西语",
+            "Khmer/高棉语",
+            "Georgian/格鲁吉亚语",
+            "Gujarati/古吉拉特语",
+            "Kazakh/哈萨克语",
+            "Haiti Creole/海地克里奥尔语",
+            "Korean/韩语",
+            "Hausa/豪萨语",
+            "Dutch/荷兰语",
+            "Kyrgyz/吉尔吉斯语",
+            "Galician/加利西亚语",
+            "Catalan/加泰罗尼亚语",
+            "Czech/捷克语",
+            "Kannada/卡纳达语",
+            "Corsican/科西嘉语",
+            "Croatian/克罗地亚语",
+            "Kurdish/库尔德语",
+            "Latin/拉丁语",
+            "Latvian/拉脱维亚语",
+            "Laotian/老挝语",
+            "Lithuanian/立陶宛语",
+            "Luxembourgish/卢森堡语",
+            "Rwandan/卢旺达语",
+            "Romanian/罗马尼亚语",
+            "Malagasy/马尔加什语",
+            "Maltese/马耳他语",
+            "Marathi/马拉地语",
+            "Malayalam/马拉雅拉姆语",
+            "Malay/马来语",
+            "Macedonian/马其顿语",
+            "Maori/毛利语",
+            "Mongolian/蒙古语",
+            "Bengali/孟加拉语",
+            "Burmese/缅甸语",
+            "Miao language/苗语",
+            "South African Xhosa/南非科萨语",
+            "South African Zulu/南非祖鲁语",
+            "Nepalese/尼泊尔语",
+            "Norwegian/挪威语",
+            "Punjabi/旁遮普语",
+            "Portuguese/葡萄牙语",
+            "Pashto/普什图语",
+            "Chichewa/齐切瓦语",
+            "Swedish/瑞典语",
+            "Samoan/萨摩亚语",
+            "Serbian/塞尔维亚语",
+            "Sesotho/塞索托语",
+            "Sinhala/僧伽罗语",
+            "Esperanto/世界语",
+            "Slovak/斯洛伐克语",
+            "Slovenian/斯洛文尼亚语",
+            "Swahili/斯瓦希里语",
+            "Scottish Gaelic/苏格兰盖尔语",
+            "Cebuano/宿务语",
+            "Somali/索马里语",
+            "Tajik/塔吉克语",
+            "Telugu/泰卢固语",
+            "Tamil/泰米尔语",
+            "Thai/泰语",
+            "Turkish/土耳其语",
+            "Turkmen/土库曼语",
+            "Welsh/威尔士语",
+            "Uyghur/维吾尔语",
+            "Urdu/乌尔都语",
+            "Ukrainian/乌克兰语",
+            "Uzbek/乌兹别克语",
+            "Spanish/西班牙语",
+            "Hebrew/希伯来语",
+            "Greek/希腊语",
+            "Hawaiian/夏威夷语",
+            "Sin German/信德语",
+            "Hungarian/匈牙利语",
+            "Shona/修纳语",
+            "Armenian/亚美尼亚语",
+            "Igbo/伊博语",
+            "Italian/意大利语",
+            "Yiddish/意第绪语",
+            "Hindi/印地语",
+            "Indonesian Sundanese/印尼巽他语",
+            "Indonesian/印尼语",
+            "Javanese/印尼爪哇语",
+            "Yoruba/约鲁巴语",
+            "Vietnamese/越南语",
+            "Chinese (Simplified)/中文（简体）",
+            "Chinese (Traditional)/中文（繁体）"
+          ],
+          "default": "Chinese/中文",
+          "description": "Translated language"
+        },
+        "search-online.add-search-engine": {
+          "type": "array",
+          "default": [
+            {
+              "name": "Duck",
+              "url": "https://duckduckgo.com/?q=%SELECTION%"
+            }
+          ],
+          "description": "Add Search Engine"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "build": "vsce package",
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "lint": "eslint src --ext ts",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "test": "node ./out/test/runTest.js",
+    "type-check": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.51.0",
+    "@types/glob": "^7.1.3",
+    "@types/mocha": "^8.0.0",
+    "@types/node": "^12.11.7",
+    "eslint": "^7.9.0",
+    "@typescript-eslint/eslint-plugin": "^4.1.1",
+    "@typescript-eslint/parser": "^4.1.1",
+    "glob": "^7.1.6",
+    "mocha": "^8.1.3",
+    "typescript": "^4.0.2",
+    "vscode-test": "^1.4.0"
+  }
 }
